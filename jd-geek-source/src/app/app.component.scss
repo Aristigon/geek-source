@@ -1,0 +1,44 @@
+@import "../constants/gutters.scss";
+@import "../constants/color.scss";
+
+.main-gutter {
+  column-gap: $MAIN_GUTTER_WIDTH;
+}
+
+.half-gutter {
+  column-gap: $MAIN_GUTTER_WIDTH/2;
+}
+
+.double-gutter {
+  column-gap: $MAIN_GUTTER_WIDTH * 2;
+}
+
+.content {
+  display: flex;
+  margin: 82px auto 32px;
+  padding: 0 16px;
+  max-width: 1180px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.spacer {
+  flex: 1;
+}
+
+footer {
+  margin-top: 70%;
+  display: flex;
+  align-items: center;
+  line-height: 20px;
+}
+
+footer a {
+  display: flex;
+  align-items: center;
+}
+
+.testbuttonposition {
+  position: relative;
+  top: 100px;
+}

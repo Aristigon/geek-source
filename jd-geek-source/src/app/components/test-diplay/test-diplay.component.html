@@ -1,0 +1,19 @@
+<div>
+  <h4>Testing Getting Data From The Best Buy API</h4>
+
+  <div *ngFor="let product of testResults">
+    <div>
+      <label class="labelBold">Department: </label
+      >{{ product.department }}&nbsp;&nbsp;
+      <label class="labelBold">SKU: </label>{{ product.sku }}
+    </div>
+    <div><label class="labelBold">Name: </label>{{ product.name }}</div>
+    <div>
+      <label class="labelBold">Sale Price: </label>{{ product.salePrice }}
+    </div>
+  </div>
+
+  <div>
+    <button [routerLink]="['/']">Home</button>
+  </div>
+</div>
