@@ -1,0 +1,11 @@
+<div class="vertical-drop-menu">
+  <div class="drop-menu-button">
+    {{ menuTitle }}
+    <app-angle-down-icon></app-angle-down-icon>
+  </div>
+  <div class="drop-menu-content">
+    <a *ngFor="let item of menuItems" routerLink="{{ item.url }}">{{
+      item.name
+    }}</a>
+  </div>
+</div>
