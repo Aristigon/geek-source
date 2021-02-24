@@ -9,7 +9,7 @@ import { TestDiplayComponent } from "./components/test-diplay/test-diplay.compon
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./components/header/header.component";
 import { FooterComponent } from "./components/footer/footer.component";
-import { ButtonComponent } from "./components/button/button.component";
+import { ButtonComponent } from "./components/common/button/button.component";
 import { ProductShowcaseComponent } from "./components/product-showcase/product-showcase.component";
 import { SearchComponent } from "./components/search/search.component";
 import { ShopByCategoryComponent } from "./components/shop-by-category/shop-by-category.component";
@@ -18,6 +18,13 @@ import { FeaturedProductsComponent } from "./components/featured-products/featur
 import { DailyDealsComponent } from "./components/daily-deals/daily-deals.component";
 import { HottestDealsComponent } from "./components/hottest-deals/hottest-deals.component";
 import { BestBuyService } from "./services/best-buy.service";
+import { TemplateDrivenDropdownMenuComponent } from "./components/common/template-driven-dropdown-menu/template-driven-dropdown-menu.component";
+import { VerticalDropdownMenuComponent } from "./components/common/vertical-dropdown-menu/vertical-dropdown-menu.component";
+import { LogoComponent } from "./components/logo/logo.component";
+import { ShoppingCartComponent } from "./components/shopping-cart/shopping-cart.component";
+import { ProductDisplayPortalComponent } from "./components/common/product-display-portal/product-display-portal.component";
+import { ProductRatingsComponent } from "./components/product-ratings/product-ratings.component";
+import { IconsModule } from "./modules/icons/icons.module";
 
 @NgModule({
   declarations: [
@@ -33,6 +40,12 @@ import { BestBuyService } from "./services/best-buy.service";
     FeaturedProductsComponent,
     DailyDealsComponent,
     HottestDealsComponent,
+    TemplateDrivenDropdownMenuComponent,
+    VerticalDropdownMenuComponent,
+    LogoComponent,
+    ShoppingCartComponent,
+    ProductDisplayPortalComponent,
+    ProductRatingsComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +53,7 @@ import { BestBuyService } from "./services/best-buy.service";
     BrowserAnimationsModule,
     HttpClientModule,
     FontAwesomeModule,
+    IconsModule,
   ],
   providers: [BestBuyService],
   bootstrap: [AppComponent],
