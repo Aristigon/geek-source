@@ -1,0 +1,15 @@
+@import "../../../../constants/color.scss";
+
+.shoppingCartComponentAspects {
+  padding: 2px;
+}
+
+.itemPositioning {
+  position: absolute;
+}
+
+section {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}

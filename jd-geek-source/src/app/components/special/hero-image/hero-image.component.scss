@@ -1,0 +1,31 @@
+@import "../../../../constants/color.scss";
+@import "../../../../constants/sizing.scss";
+@import "../../../../constants/gutters.scss";
+
+.heroClip {
+  position: absolute;
+  width: $maxPageWidth + $doubleGutter*2;
+  top: -1000px;
+  clip: rect(1000px, 2048px, 1400px, 0px);
+  filter: blur(4px) brightness(50%);
+}
+
+.tint {
+  position: relative;
+  margin-bottom: 20px;
+  width: $maxPageWidth + $doubleGutter*2;
+  height: 400px;
+  box-shadow: rgba(0, 0, 0, 0.2) 3px 5px 5px;
+}
+
+.tint:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: $heroTint;
+  transition: all 0.3s linear;
+}
