@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
-import { TestData } from "../models/testdata.interface";
 import * as configs from "../../assets/config.json";
 import { Observable } from "rxjs";
 import { CommonProductsAPIData } from "../models/commonProductsAPIData.interface";
@@ -15,19 +14,16 @@ export class BestBuyService {
   contentTypeQuery = "?Content-type=%22application%2Fjson%22 HTTP/1.1";
   headers = new HttpHeaders({ "content-type": "application/json" });
 
-  getTestData(): Observable<TestData> {
+  getSingleCategorybyId(categoryID: string): Observable<Categories> {
+    const httpUrl = `https://api.bestbuy.com/v1/categories(id=${categoryID})?`;
     const httpParams = new HttpParams()
-      .set("show", configs.show)
-      .set("pageSize", "3")
+      .set("show", "name,id,subCategories.name,subCategories.id")
+      .set("pageSize", "10")
       .set("format", configs.format)
       .set("apiKey", configs.apiKey);
-
     const options = { params: httpParams };
 
-    return this.http.get<TestData>(
-      "https://api.bestbuy.com/v1/products?",
-      options
-    );
+    return this.http.get<Categories>(httpUrl, options);
   }
 
   getPortalProducts(offerTypes: string): Observable<CommonProductsAPIData> {
@@ -35,7 +31,7 @@ export class BestBuyService {
     const httpParams = new HttpParams()
       .set(
         "show",
-        "image,name,customerReviewAverage,customerReviewCount,regularPrice,salePrice"
+        "sku,image,name,customerReviewAverage,customerReviewCount,regularPrice,salePrice,modelNumber,longDescription"
       )
       .set("pageSize", "10")
       .set("format", configs.format)
@@ -46,10 +42,10 @@ export class BestBuyService {
     return this.http.get<CommonProductsAPIData>(httpUrl, options);
   }
 
-  getTopLevelCategories(): Observable<Categories> {
-    const httpUrl = "https://api.bestbuy.com/v1/categories(id=abcat*)?";
+  getTopLevelCategories(categories: string): Observable<Categories> {
+    const httpUrl = `https://api.bestbuy.com/v1/categories(id=${categories})?`;
     const httpParams = new HttpParams()
-      .set("show", "id,name")
+      .set("show", "id,name,subCategories")
       .set("format", configs.format)
       .set("apiKey", configs.apiKey);
 
@@ -63,7 +59,7 @@ export class BestBuyService {
     const httpParams = new HttpParams()
       .set(
         "show",
-        "image,name,customerReviewAverage,customerReviewCount,regularPrice,salePrice"
+        "sku,image,name,customerReviewAverage,customerReviewCount,regularPrice,salePrice,modelNumber,longDescription"
       )
       .set("format", configs.format)
       .set("apiKey", configs.apiKey);

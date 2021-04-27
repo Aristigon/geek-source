@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 
 @Component({
   selector: "app-button",
@@ -6,7 +6,16 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./button.component.scss"],
 })
 export class ButtonComponent implements OnInit {
-  constructor() {}
+  @Input() buttonTextCase: string;
+  @Input() buttonClass: string;
+  @Input() buttonText: string;
+  @Input() buttonLink: string;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.buttonTextCase === "lower") {
+      this.buttonText = this.buttonText.toLowerCase();
+    } else if (this.buttonTextCase === "upper") {
+      this.buttonText = this.buttonText.toUpperCase();
+    }
+  }
 }
