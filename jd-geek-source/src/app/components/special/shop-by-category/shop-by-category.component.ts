@@ -42,7 +42,7 @@ export class ShopByCategoryComponent implements OnInit {
             const cats: AccordianMain = {
               id: category.id,
               name: category.name,
-              link: "/",
+              link: `/category/${category.id}`,
               subMenuItems: subcats,
             };
 

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { AccordianSub } from "src/app/models/accordion.interface";
 
 @Component({
@@ -7,6 +7,13 @@ import { AccordianSub } from "src/app/models/accordion.interface";
   templateUrl: "./foldout.component.html",
   styleUrls: ["./foldout.component.scss"],
 })
-export class FoldoutComponent {
+export class FoldoutComponent implements OnInit {
   @Input() subMenu: AccordianSub[];
+  subCatLink: string[] = [];
+
+  ngOnInit(): void {
+    this.subMenu.forEach((sub) => {
+      this.subCatLink.push(`/category/${sub.id}`);
+    });
+  }
 }

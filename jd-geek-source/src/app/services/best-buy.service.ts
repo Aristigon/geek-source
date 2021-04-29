@@ -14,6 +14,7 @@ export class BestBuyService {
   contentTypeQuery = "?Content-type=%22application%2Fjson%22 HTTP/1.1";
   headers = new HttpHeaders({ "content-type": "application/json" });
 
+  /* Get a category or categories */
   getSingleCategorybyId(categoryID: string): Observable<Categories> {
     const httpUrl = `https://api.bestbuy.com/v1/categories(id=${categoryID})?`;
     const httpParams = new HttpParams()
@@ -26,6 +27,31 @@ export class BestBuyService {
     return this.http.get<Categories>(httpUrl, options);
   }
 
+  getTopLevelCategories(categories: string): Observable<Categories> {
+    const httpUrl = `https://api.bestbuy.com/v1/categories(id=${categories})?`;
+    const httpParams = new HttpParams()
+      .set("show", "id,name,subCategories")
+      .set("format", configs.format)
+      .set("apiKey", configs.apiKey);
+
+    const options = { params: httpParams };
+
+    return this.http.get<Categories>(httpUrl, options);
+  }
+
+  getCategoryNameById(categoryId: string): Observable<Categories> {
+    const httpUrl = `https://api.bestbuy.com/v1/categories(id=${categoryId})?`;
+    const httpParams = new HttpParams()
+      .set("show", "id,name")
+      .set("format", configs.format)
+      .set("apiKey", configs.apiKey);
+
+    const options = { params: httpParams };
+
+    return this.http.get<Categories>(httpUrl, options);
+  }
+
+  /* Get a product or products */
   getPortalProducts(offerTypes: string): Observable<CommonProductsAPIData> {
     const httpUrl = `https://api.bestbuy.com/v1/products(offers.type=${offerTypes})?`;
     const httpParams = new HttpParams()
@@ -40,18 +66,6 @@ export class BestBuyService {
     const options = { params: httpParams };
 
     return this.http.get<CommonProductsAPIData>(httpUrl, options);
-  }
-
-  getTopLevelCategories(categories: string): Observable<Categories> {
-    const httpUrl = `https://api.bestbuy.com/v1/categories(id=${categories})?`;
-    const httpParams = new HttpParams()
-      .set("show", "id,name,subCategories")
-      .set("format", configs.format)
-      .set("apiKey", configs.apiKey);
-
-    const options = { params: httpParams };
-
-    return this.http.get<Categories>(httpUrl, options);
   }
 
   getSingleProduct(productID: number): Observable<CommonPortalData> {
@@ -74,7 +88,22 @@ export class BestBuyService {
     const httpParams = new HttpParams()
       .set(
         "show",
-        "image,name,customerReviewAverage,customerReviewCount,regularPrice,salePrice"
+        "sku,image,name,customerReviewAverage,customerReviewCount,regularPrice,salePrice,modelNumber,longDescription"
+      )
+      .set("format", configs.format)
+      .set("apiKey", configs.apiKey);
+
+    const options = { params: httpParams };
+
+    return this.http.get<CommonProductsAPIData>(httpUrl, options);
+  }
+
+  getProductsByCategory(categoryID: string): Observable<CommonProductsAPIData> {
+    const httpUrl = `https://api.bestbuy.com/v1/products((categoryPath.id=${categoryID}))`;
+    const httpParams = new HttpParams()
+      .set(
+        "show",
+        "sku,image,name,customerReviewAverage,customerReviewCount,regularPrice,salePrice,modelNumber,longDescription"
       )
       .set("format", configs.format)
       .set("apiKey", configs.apiKey);
