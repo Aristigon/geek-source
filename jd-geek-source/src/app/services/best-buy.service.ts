@@ -98,13 +98,17 @@ export class BestBuyService {
     return this.http.get<CommonProductsAPIData>(httpUrl, options);
   }
 
-  getProductsByCategory(categoryID: string): Observable<CommonProductsAPIData> {
+  getProductsByCategory(
+    categoryID: string,
+    displayNumber: string
+  ): Observable<CommonProductsAPIData> {
     const httpUrl = `https://api.bestbuy.com/v1/products((categoryPath.id=${categoryID}))`;
     const httpParams = new HttpParams()
       .set(
         "show",
         "sku,image,name,customerReviewAverage,customerReviewCount,regularPrice,salePrice,modelNumber,longDescription"
       )
+      .set("pageSize", displayNumber)
       .set("format", configs.format)
       .set("apiKey", configs.apiKey);
 

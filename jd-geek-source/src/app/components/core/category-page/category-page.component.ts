@@ -1,5 +1,5 @@
 /* eslint-disable no-magic-numbers */
-import { Component, OnInit } from "@angular/core";
+import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { CommonPortalData } from "src/app/models/commonPortalData.interface";
 import { BestBuyService } from "src/app/services/best-buy.service";
@@ -13,6 +13,10 @@ export class CategoryPageComponent implements OnInit {
   categoryID: string;
   categoryName: string;
   productData: CommonPortalData[] = [];
+  totalCountOfProducts: number;
+  currentProductsDisplaying = 20;
+  @ViewChild("app-category-display") catDisplay: ElementRef;
+
   constructor(
     private bestBuyService: BestBuyService,
     private activatedRoute: ActivatedRoute
@@ -30,9 +34,32 @@ export class CategoryPageComponent implements OnInit {
         }
       });
     this.bestBuyService
-      .getProductsByCategory(this.categoryID)
+      .getProductsByCategory(
+        this.categoryID,
+        this.currentProductsDisplaying.toString()
+      )
       .subscribe((results) => {
         if (results !== null) {
+          this.totalCountOfProducts = results.total;
+          this.productData = results.products;
+        }
+      });
+  }
+
+  lazyLoadProducts(additionalProducts: number) {
+    this.currentProductsDisplaying += additionalProducts;
+
+    if (this.currentProductsDisplaying > this.totalCountOfProducts) {
+      this.currentProductsDisplaying = this.totalCountOfProducts;
+    }
+    this.bestBuyService
+      .getProductsByCategory(
+        this.categoryID,
+        this.currentProductsDisplaying.toString()
+      )
+      .subscribe((results) => {
+        if (results !== null) {
+          this.totalCountOfProducts = results.total;
           this.productData = results.products;
         }
       });
