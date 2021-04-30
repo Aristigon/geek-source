@@ -4,7 +4,8 @@
       fontSize="x-large"
       featureStyle="redTheme"
       textStyle="redTheme"
-      titleText="Hottest Deal">
+      titleText="Hottest Deal"
+    >
     </app-sectionheader>
     <section class="flex hottestProduct" *ngIf="hottestDeal">
       <div>
@@ -24,30 +25,32 @@
       </div>
       <div class="flex mainPriceSection">
         <div class="mainPrice">
-          <sup>$</sup>{{ hottestDeal.salePrice | currency:'US':'' }}
+          <sup>$</sup>{{ hottestDeal.salePrice | currency: "US":"" }}
         </div>
         <div class="flex savings">
           <div class="savedMoney">
-            save <sup>$</sup>{{ savings | currency:'US':'' }}
+            save <sup>$</sup>{{ savings | currency: "US":"" }}
           </div>
           <div class="wasThis">
-            was <sup>$</sup>{{ hottestDeal.regularPrice | currency:'US':'' }}
+            was <sup>$</sup>{{ hottestDeal.regularPrice | currency: "US":"" }}
           </div>
         </div>
       </div>
     </section>
-    <div class="flex buttonSection">
+    <div class="flex buttonSection doubleGutterDrop">
       <app-button
         buttonTextCase="upper"
         buttonClass="ovalRedText"
         buttonText="buy now"
-        buttonLink="home">
+        buttonLink="home"
+      >
       </app-button>
       <app-button
         buttonTextCase="lower"
         buttonClass="default"
         buttonText="shop all deals"
-        buttonLink="home">
+        buttonLink="home"
+      >
       </app-button>
     </div>
   </div>
