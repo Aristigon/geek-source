@@ -116,4 +116,42 @@ export class BestBuyService {
 
     return this.http.get<CommonProductsAPIData>(httpUrl, options);
   }
+
+  getProductsBySearch(
+    searchText: string,
+    displayNumber: string
+  ): Observable<CommonProductsAPIData> {
+    const httpUrl = `https://api.bestbuy.com/v1/products((search=${searchText}))`;
+    const httpParams = new HttpParams()
+      .set(
+        "show",
+        "sku,image,name,customerReviewAverage,customerReviewCount,regularPrice,salePrice,modelNumber,longDescription"
+      )
+      .set("pageSize", displayNumber)
+      .set("format", configs.format)
+      .set("apiKey", configs.apiKey);
+
+    const options = { params: httpParams };
+
+    return this.http.get<CommonProductsAPIData>(httpUrl, options);
+  }
+
+  getProducts(
+    searchText: string,
+    displayNumber: string
+  ): Observable<CommonProductsAPIData> {
+    const httpUrl = `https://api.bestbuy.com/v1/products((${searchText}))`;
+    const httpParams = new HttpParams()
+      .set(
+        "show",
+        "sku,image,name,customerReviewAverage,customerReviewCount,regularPrice,salePrice,modelNumber,longDescription"
+      )
+      .set("pageSize", displayNumber)
+      .set("format", configs.format)
+      .set("apiKey", configs.apiKey);
+
+    const options = { params: httpParams };
+
+    return this.http.get<CommonProductsAPIData>(httpUrl, options);
+  }
 }

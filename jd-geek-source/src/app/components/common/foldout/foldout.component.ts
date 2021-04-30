@@ -13,7 +13,7 @@ export class FoldoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.subMenu.forEach((sub) => {
-      this.subCatLink.push(`/category/${sub.id}`);
+      this.subCatLink.push(`/category/false/${sub.id}`);
     });
   }
 }
