@@ -4,26 +4,23 @@
 
 .content {
   display: flex;
-  margin: -8px auto 32px;
+  margin: -8px auto 0;
   padding: 0 16px;
   width: $maxContentWidth;
   flex-flow: column nowrap;
+  justify-content: space-between;
 }
 
 .header {
-  order: 1;
-}
-
-.menuNav {
-  order: 2;
 }
 
 .routerContent {
-  order: 3;
+  min-height: auto;
+  max-height: auto;
+  height: auto;
 }
 
 .footer {
-  margin-top: 70%;
-  margin-left: $halfGutter;
-  order: 4;
+  margin-top: $mainGutter;
+  position: relative;
 }
