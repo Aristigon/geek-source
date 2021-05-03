@@ -1,0 +1,40 @@
+@import "../../../../constants/color.scss";
+@import "../../../../constants/gutters.scss";
+@import "../../../../constants/sizing.scss";
+
+.flex {
+  display: flex;
+}
+
+.mainSection {
+  flex-flow: column nowrap;
+  background-color: $white;
+  margin: $mainGutter;
+  width: $productShowCaseMaxWidth;
+  height: 1000px;
+  min-height: 1000px;
+  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  //width: ($maxContentWidth / 2) + ($doubleGutter * 5);
+}
+
+.sectionHeader {
+  margin-top: $halfGutter;
+  margin-left: $mainGutter;
+}
+
+.numberOfProducts {
+  color: black;
+  font-size: medium;
+  margin-top: 40px;
+  margin-left: $mainGutter;
+}
+
+.showProducts {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
+  box-sizing: content-box; /* So the width will be 100% + 17px */
+}

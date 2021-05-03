@@ -1,0 +1,12 @@
+<div class="flex mainSection">
+  <div class="flex">
+    <app-shop-by-category></app-shop-by-category>
+    <app-category-display
+      [totalNumberOfProducts]="totalCountOfProducts"
+      [categoryName]="categoryName"
+      [productData]="productData"
+      (addToProductDisplay)="lazyLoadProducts($event)"
+    ></app-category-display>
+  </div>
+  <app-serviceiconsbar></app-serviceiconsbar>
+</div>

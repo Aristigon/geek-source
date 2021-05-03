@@ -20,7 +20,6 @@ export class ProductPageComponent implements OnInit {
 
   constructor(
     private bestBuyService: BestBuyService,
-    private router: Router,
     private activatedRoute: ActivatedRoute
   ) {}
 

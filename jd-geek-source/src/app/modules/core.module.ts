@@ -12,6 +12,7 @@ import { ShoppingCartComponent } from "../components/core/shopping-cart/shopping
 import { HomeComponent } from "../components/core/home/home.component";
 import { ServiceiconsbarComponent } from "../components/core/serviceiconsbar/serviceiconsbar.component";
 import { ProductPageComponent } from "../components/core/product-page/product-page.component";
+import { CategoryPageComponent } from "../components/core/category-page/category-page.component";
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ProductPageComponent } from "../components/core/product-page/product-pa
     HomeComponent,
     ServiceiconsbarComponent,
     ProductPageComponent,
+    CategoryPageComponent,
   ],
   exports: [
     HeaderComponent,
@@ -33,6 +35,7 @@ import { ProductPageComponent } from "../components/core/product-page/product-pa
     HomeComponent,
     ServiceiconsbarComponent,
     ProductPageComponent,
+    CategoryPageComponent,
   ],
   imports: [
     CommonModule,

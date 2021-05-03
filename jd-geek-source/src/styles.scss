@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./constants/color.scss";
+@import "./constants/gutters.scss";
 
 .flex {
   display: flex;
@@ -10,4 +11,24 @@ body {
   color: $white;
   font: 400 12px Arial;
   margin-bottom: 0px;
+}
+
+.doubleGutterDrop {
+  margin-top: $doubleGutter;
+}
+
+.mainGutterDrop {
+  margin-top: $mainGutter;
+}
+
+.mainColumn {
+  width: $mainGutter;
+  min-width: $mainGutter;
+  max-width: $mainGutter;
+}
+
+.doubleColumn {
+  width: $doubleGutter;
+  min-width: $doubleGutter;
+  max-width: $doubleGutter;
 }
