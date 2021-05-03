@@ -1,0 +1,11 @@
+@import "../../../../constants/color.scss";
+@import "../../../../constants/gutters.scss";
+@import "../../../../constants/sizing.scss";
+
+.flex {
+  display: flex;
+}
+
+.mainSection {
+  flex-flow: column nowrap;
+}

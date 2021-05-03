@@ -1,0 +1,18 @@
+<div class="flex mainSection">
+  <div class="flex sectionHeader">
+    <app-sectionheader
+      fontSize="large"
+      featureStyle="redTheme"
+      textStyle="redTheme"
+      [titleText]="categoryName"
+    >
+    </app-sectionheader>
+    <span class="numberOfProducts">{{ totalNumberOfProducts }} items</span>
+  </div>
+  <div class="showProducts" (scroll)="scrollDetect($event)">
+    <app-product-showcase
+      [productData]="product"
+      *ngFor="let product of productData"
+    ></app-product-showcase>
+  </div>
+</div>

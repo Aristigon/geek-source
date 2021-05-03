@@ -39,7 +39,7 @@
 .lowerSection {
   margin-top: $mainGutter;
   width: $maxPageWidth + $doubleGutter * 2;
-  height: 400px;
+  height: fit-content;
   position: relative;
   left: -$doubleGutter * 2;
 }

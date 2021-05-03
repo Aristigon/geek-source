@@ -10,6 +10,7 @@ import { DailyDealsComponent } from "../components/special/daily-deals/daily-dea
 import { HottestDealsComponent } from "../components/special/hottest-deals/hottest-deals.component";
 import { HeroDisplayComponent } from "../components/special/hero-display/hero-display.component";
 import { ProductDisplayComponent } from "../components/special/product-display/product-display.component";
+import { CategoryDisplayComponent } from "../components/special/category-display/category-display.component";
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ProductDisplayComponent } from "../components/special/product-display/p
     HottestDealsComponent,
     HeroDisplayComponent,
     ProductDisplayComponent,
+    CategoryDisplayComponent,
   ],
   exports: [
     ProductShowcaseComponent,
@@ -31,6 +33,7 @@ import { ProductDisplayComponent } from "../components/special/product-display/p
     HottestDealsComponent,
     HeroDisplayComponent,
     ProductDisplayComponent,
+    CategoryDisplayComponent,
   ],
   imports: [IconsModule, CommonFeatureModule, CommonModule],
 })

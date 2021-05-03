@@ -3,11 +3,12 @@
 
 .sbcMain {
   flex-flow: column nowrap;
+  margin-right: $mainGutter;
 }
 
 .sbcTitle {
   margin-top: $mainGutter;
-  margin-left: $doubleGutter;
+  margin-left: $mainGutter;
 }
 
 .subcat {
