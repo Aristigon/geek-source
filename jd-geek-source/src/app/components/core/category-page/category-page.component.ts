@@ -30,8 +30,6 @@ export class CategoryPageComponent implements OnInit {
       this.activatedRoute.snapshot.params["textSearch"]
     );
 
-    console.log(this.textSearch);
-
     if (this.textSearch) {
       this.searchProducts = `search=${this.activatedRoute.snapshot.params["searchProducts"]}`;
 
@@ -44,8 +42,6 @@ export class CategoryPageComponent implements OnInit {
         .getCategoryNameById(this.categoryID)
         .subscribe((catName) => {
           if (catName !== null) {
-            console.log(catName);
-
             this.categoryName = catName.categories[0].name;
           }
         });

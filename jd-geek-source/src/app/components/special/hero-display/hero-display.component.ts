@@ -10,6 +10,7 @@ import { BestBuyService } from "src/app/services/best-buy.service";
 })
 export class HeroDisplayComponent implements OnInit {
   displayTVImage: string;
+  tvCategoryLink = "/category/false/abcat0101000";
 
   constructor(private bestBuyService: BestBuyService) {}
 
@@ -17,7 +18,7 @@ export class HeroDisplayComponent implements OnInit {
     this.bestBuyService
       .getSingleProduct(6325563)
       .subscribe((results: CommonPortalData) => {
-        if (results != null) {
+        if (results !== null) {
           this.displayTVImage = results.image;
         }
       });

@@ -73,7 +73,7 @@ export class BestBuyService {
     const httpParams = new HttpParams()
       .set(
         "show",
-        "sku,image,name,customerReviewAverage,customerReviewCount,regularPrice,salePrice,modelNumber,longDescription"
+        "sku,images,image,alternateViewsImage,angleImage,backViewImage,energyGuideImage,leftViewImage,remoteControlImage,rightViewImage,topViewImage,name,customerReviewAverage,customerReviewCount,regularPrice,salePrice,modelNumber,longDescription"
       )
       .set("format", configs.format)
       .set("apiKey", configs.apiKey);

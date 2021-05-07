@@ -1,10 +1,29 @@
 <div *ngIf="productData !== undefined" class="flex productMain">
   <div class="flex leftSideBox">
-    <img
-      class="leftSideImage"
-      src="{{ productData.image }}"
-      alt="{{ productData.name }}"
-    />
+    <div class="flex carousel">
+      <section class="flex slideSection">
+        <div
+          class="slide hideImage"
+          *ngFor="let image of productData.images; let i = index"
+        >
+          <img
+            class="leftSideImage"
+            src="{{ image.href }}"
+            alt="{{ image.rel }}"
+          />
+        </div>
+      </section>
+    </div>
+    <div class="imageControls">
+      <app-angle-left-icon
+        iconSize="5x"
+        (click)="nextSlide(-1)"
+      ></app-angle-left-icon>
+      <app-angle-right-icon
+        iconSize="5x"
+        (click)="nextSlide(1)"
+      ></app-angle-right-icon>
+    </div>
   </div>
   <div class="rightSideData">
     <span class="headerName">{{ productData.name }}</span>

@@ -2,19 +2,9 @@
 @import "../../../../constants/sizing.scss";
 @import "../../../../constants/gutters.scss";
 
-$imageWidth: 300px;
-$imageHeight: 250px;
-
-.leftSideImage {
-  width: 100%;
-  max-width: fit-content;
-  height: fit-content;
-  max-height:fit-content;
-  padding: $mainGutter;
-}
-
 $mainBoxWidth: $maxPageWidth - $mainGutter;
 $halfMain: $mainBoxWidth / 2;
+$leftSideHeight: 540px;
 
 .productMain {
   position: relative;
@@ -29,15 +19,6 @@ $halfMain: $mainBoxWidth / 2;
 
 .flex {
   display: flex;
-}
-
-.leftSideBox {
-  margin: $mainGutter $mainGutter $mainGutter 130px;
-  border: 2px solid $grey;
-  width: $halfMain;
-  height: 540px;
-  align-items: center;
-  justify-content: center;
 }
 
 .rightSideData {
@@ -90,4 +71,78 @@ $halfMain: $mainBoxWidth / 2;
 .regularPrice {
   font-weight: 700;
   color: $grey;
+}
+
+
+$imageWidth: 500px;
+$imageHeight: 300px;
+
+.carouselContainer {
+  flex: 5;
+}
+
+.carousel {
+  box-sizing: border-box;
+  max-width: $imageWidth - 120px;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: mandatory;
+}
+
+.slideSection {
+  max-width: 400px;
+  width: 400px;
+  justify-content: center;
+}
+.slide {
+  justify-content: center;
+}
+
+.leftSideImage {
+  transform: scale(0.65);
+
+  // max-width: $imageWidth;
+  // max-height: $imageHeight;
+  // width: auto;
+  // height: auto;
+  margin: 10px;
+}
+
+.hideImage {
+  display: none;
+}
+
+.showImage {
+  display: contents;
+}
+
+.leftSideBox {
+  margin: $mainGutter $mainGutter $mainGutter 130px;
+  border: 2px solid $grey;
+  width: $halfMain;
+  height: $leftSideHeight;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageControls {
+  display: none;
+  position: absolute;
+  align-content: center;
+  width: $halfMain / 1.3;
+  align-content: center;
+  justify-content: space-between;
+  color: grey;
+}
+
+.leftSideBox:hover .imageControls {
+  display: flex;
+  animation-name: fadeIn;
+  animation-duration: 2s;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0;}
+  100% {opacity: 1;}
 }

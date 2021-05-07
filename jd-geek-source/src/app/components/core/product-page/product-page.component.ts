@@ -1,7 +1,10 @@
 /* eslint-disable dot-notation */
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { CommonPortalData } from "src/app/models/commonPortalData.interface";
+import {
+  CommonPortalData,
+  ProductImage,
+} from "src/app/models/commonPortalData.interface";
 import { CommonProductsAPIData } from "src/app/models/commonProductsAPIData.interface";
 import { BestBuyService } from "src/app/services/best-buy.service";
 
@@ -17,6 +20,7 @@ export class ProductPageComponent implements OnInit {
   todaysDeals: CommonPortalData[];
   productData: CommonPortalData;
   productSKU: number;
+  productImages: ProductImage[] = [];
 
   constructor(
     private bestBuyService: BestBuyService,

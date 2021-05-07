@@ -4,7 +4,7 @@
     <div class="flex carouselContainer">
       <div id="{{ carouselID }}" class="flex carousel">
         <section class="flex portalProduct" *ngFor="let product of productData">
-          <div>
+          <div class="flex imageBox">
             <img
               class="imageSize"
               src="{{ product.image }}"
@@ -50,6 +50,6 @@
     </div>
   </div>
 </div>
-<div class="noContentMessage" *ngIf="!displayProducts">
+<div class="portalViewErr" *ngIf="!displayProducts">
   <span>{{ errorMessage }}</span>
 </div>

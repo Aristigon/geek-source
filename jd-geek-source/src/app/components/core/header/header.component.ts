@@ -77,7 +77,7 @@ export class HeaderComponent implements OnInit {
                 this.productData = results.products;
               } else {
                 this.noResultsMessage =
-                  "No proeducts to display. Please try again later!";
+                  "No products to display. Please try again later!";
               }
             },
             (err) => {
@@ -100,13 +100,13 @@ export class HeaderComponent implements OnInit {
               this.productData = results.products;
             } else {
               this.noResultsMessage =
-                "No proeducts to display. Please try again later!";
+                "No products to display. Please try again later! Jack!!";
             }
           },
           (err) => {
             console.error(err);
             this.noResultsMessage =
-              "No proeducts to display. Please try again later!";
+              "No products to display. Please try again later!";
           }
         );
       } else {
