@@ -3,8 +3,13 @@ export interface ProductImage {
   href: string;
 }
 
-export interface CommonPortalData {
+export interface ProductVariationSku {
   sku: string;
+}
+
+export interface CommonPortalData {
+  sku: number;
+  productVariations: ProductVariationSku[];
   image: string;
   images: ProductImage[];
   name: string;

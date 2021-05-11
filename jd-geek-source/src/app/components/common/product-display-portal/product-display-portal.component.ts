@@ -1,5 +1,11 @@
 /* eslint-disable no-magic-numbers */
-import { Component, Input, OnChanges } from "@angular/core";
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+} from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { CommonPortalData } from "src/app/models/commonPortalData.interface";
 
@@ -26,6 +32,7 @@ export class ProductDisplayPortalComponent implements OnChanges {
   scrollTracker = RIGHT_SCROLL_STOP;
   displayProducts = true;
   activatedRoute: ActivatedRoute;
+  recentlyViewed: number[] = [];
 
   constructor(public router: Router) {}
 
@@ -58,9 +65,15 @@ export class ProductDisplayPortalComponent implements OnChanges {
     }
   }
 
-  linkToProductPage(productSKU: CommonPortalData): void {
-    this.router
-      .navigateByUrl("/", { skipLocationChange: true })
-      .then(() => this.router.navigateByUrl(`product/${productSKU}`));
+  linkToProductPage(productSKU: number): void {
+    if (!this.recentlyViewed.includes(productSKU)) {
+      if (this.recentlyViewed.length === 10) {
+        this.recentlyViewed.pop();
+      }
+      this.recentlyViewed.push(productSKU);
+    }
+
+    localStorage.setItem("recently", this.recentlyViewed.toString());
+    this.router.navigateByUrl(`product/${productSKU}`);
   }
 }

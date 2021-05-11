@@ -16,7 +16,7 @@ import * as configs from "../../../../assets/config.json";
 })
 export class HeaderComponent implements OnInit {
   productData: CommonPortalData[];
-  recentlyViewedProducts = [];
+  recentlyViewedInput: number[] = [];
   savedItemsProducts = [];
   menuItems: DropDownLink[] = [];
   displayProductsCarousel = false;
@@ -68,9 +68,13 @@ export class HeaderComponent implements OnInit {
     if (productSelection === this.productSelectionTypes.recent) {
       this.productData = [];
 
-      if (testing.recently_viewed_ids.length > 0) {
+      const recent = localStorage.getItem("recently").split(",");
+
+      this.recentlyViewedInput = recent.map((x) => Number.parseInt(x));
+
+      if (this.recentlyViewedInput.length > 0) {
         this.bestBuyService
-          .getProductsByIds(testing.recently_viewed_ids)
+          .getProductsByIds(this.recentlyViewedInput)
           .subscribe(
             (results: CommonProductsAPIData) => {
               if (results.products.length > 0) {

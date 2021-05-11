@@ -13,6 +13,8 @@ export class BestBuyService {
   constructor(private http: HttpClient) {}
   contentTypeQuery = "?Content-type=%22application%2Fjson%22 HTTP/1.1";
   headers = new HttpHeaders({ "content-type": "application/json" });
+  attributes =
+    "sku,images,image,productVariations.sku,name,customerReviewAverage,customerReviewCount,regularPrice,salePrice,modelNumber,longDescription";
 
   /* Get a category or categories */
   getSingleCategorybyId(categoryID: string): Observable<Categories> {
@@ -55,10 +57,7 @@ export class BestBuyService {
   getPortalProducts(offerTypes: string): Observable<CommonProductsAPIData> {
     const httpUrl = `https://api.bestbuy.com/v1/products(offers.type=${offerTypes})?`;
     const httpParams = new HttpParams()
-      .set(
-        "show",
-        "sku,image,name,customerReviewAverage,customerReviewCount,regularPrice,salePrice,modelNumber,longDescription"
-      )
+      .set("show", this.attributes)
       .set("pageSize", "10")
       .set("format", configs.format)
       .set("apiKey", configs.apiKey);
@@ -71,10 +70,7 @@ export class BestBuyService {
   getSingleProduct(productID: number): Observable<CommonPortalData> {
     const httpUrl = `https://api.bestbuy.com/v1/products/${productID}.json?`;
     const httpParams = new HttpParams()
-      .set(
-        "show",
-        "sku,images,image,alternateViewsImage,angleImage,backViewImage,energyGuideImage,leftViewImage,remoteControlImage,rightViewImage,topViewImage,name,customerReviewAverage,customerReviewCount,regularPrice,salePrice,modelNumber,longDescription"
-      )
+      .set("show", this.attributes)
       .set("format", configs.format)
       .set("apiKey", configs.apiKey);
 
@@ -86,10 +82,7 @@ export class BestBuyService {
   getProductsByIds(productIDs: number[]): Observable<CommonProductsAPIData> {
     const httpUrl = `https://api.bestbuy.com/v1/products(sku in (${productIDs}))`;
     const httpParams = new HttpParams()
-      .set(
-        "show",
-        "sku,image,name,customerReviewAverage,customerReviewCount,regularPrice,salePrice,modelNumber,longDescription"
-      )
+      .set("show", this.attributes)
       .set("format", configs.format)
       .set("apiKey", configs.apiKey);
 
@@ -104,10 +97,7 @@ export class BestBuyService {
   ): Observable<CommonProductsAPIData> {
     const httpUrl = `https://api.bestbuy.com/v1/products((categoryPath.id=${categoryID}))`;
     const httpParams = new HttpParams()
-      .set(
-        "show",
-        "sku,image,name,customerReviewAverage,customerReviewCount,regularPrice,salePrice,modelNumber,longDescription"
-      )
+      .set("show", this.attributes)
       .set("pageSize", displayNumber)
       .set("format", configs.format)
       .set("apiKey", configs.apiKey);
@@ -123,10 +113,7 @@ export class BestBuyService {
   ): Observable<CommonProductsAPIData> {
     const httpUrl = `https://api.bestbuy.com/v1/products((search=${searchText}))`;
     const httpParams = new HttpParams()
-      .set(
-        "show",
-        "sku,image,name,customerReviewAverage,customerReviewCount,regularPrice,salePrice,modelNumber,longDescription"
-      )
+      .set("show", this.attributes)
       .set("pageSize", displayNumber)
       .set("format", configs.format)
       .set("apiKey", configs.apiKey);
@@ -142,10 +129,7 @@ export class BestBuyService {
   ): Observable<CommonProductsAPIData> {
     const httpUrl = `https://api.bestbuy.com/v1/products((${searchText}))`;
     const httpParams = new HttpParams()
-      .set(
-        "show",
-        "sku,image,name,customerReviewAverage,customerReviewCount,regularPrice,salePrice,modelNumber,longDescription"
-      )
+      .set("show", this.attributes)
       .set("pageSize", displayNumber)
       .set("format", configs.format)
       .set("apiKey", configs.apiKey);

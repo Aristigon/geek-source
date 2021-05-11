@@ -14,7 +14,7 @@
       </div>
       <app-product-display-portal
         class="carousel"
-        [productData]="featuredProducts"
+        [productData]="similarProducts"
         carouselID="featured"
         [errorMessage]="noResultsMessage"
       ></app-product-display-portal>
@@ -32,7 +32,7 @@
         </div>
         <app-product-display-portal
           class="carousel"
-          [productData]="todaysDeals"
+          [productData]="recentlyViewed"
           carouselID="todays"
           [errorMessage]="noResultsMessage"
         ></app-product-display-portal>

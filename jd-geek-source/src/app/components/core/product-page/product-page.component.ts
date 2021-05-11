@@ -1,6 +1,7 @@
+/* eslint-disable no-magic-numbers */
 /* eslint-disable dot-notation */
-import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Component, Input, OnInit } from "@angular/core";
+import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
 import {
   CommonPortalData,
   ProductImage,
@@ -15,44 +16,81 @@ import { BestBuyService } from "src/app/services/best-buy.service";
 })
 export class ProductPageComponent implements OnInit {
   offerTypes = ["digital_insert", "deal_of_the_day"];
-  featuredProducts: CommonPortalData[];
+  similarProductSkus: number[] = [];
+  similarProducts: CommonPortalData[] = [];
   noResultsMessage: string;
-  todaysDeals: CommonPortalData[];
+  recentlyViewed: CommonPortalData[];
   productData: CommonPortalData;
-  productSKU: number;
+  @Input() productSKU: number;
   productImages: ProductImage[] = [];
+  recentlyViewedInput: number[] = [];
 
   constructor(
     private bestBuyService: BestBuyService,
-    private activatedRoute: ActivatedRoute
-  ) {}
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {
+    this.router.events.subscribe((val) => {
+      if (val instanceof NavigationEnd) {
+        this.productSKU = this.activatedRoute.snapshot.params["product"];
+        this.bestBuyService.getSingleProduct(this.productSKU).subscribe(
+          (result: CommonPortalData) => {
+            if (result !== null) {
+              this.productData = result;
+            }
+          },
+          (err) => {
+            console.error(err);
+            this.noResultsMessage = "No image avaliable yet.";
+          }
+        );
+
+        const recent = localStorage.getItem("recently").split(",");
+
+        this.recentlyViewedInput = recent.map((x) => Number.parseInt(x));
+
+        if (this.recentlyViewedInput.length > 0) {
+          this.bestBuyService
+            .getProductsByIds(this.recentlyViewedInput)
+            .subscribe(
+              (results: CommonProductsAPIData) => {
+                if (results.products.length > 0) {
+                  this.recentlyViewed = results.products;
+                } else {
+                  this.noResultsMessage =
+                    "No products to display. Please try again later!";
+                }
+              },
+              (err) => {
+                console.error(err);
+                this.noResultsMessage =
+                  "No products to display. Please try again later!";
+              }
+            );
+        } else {
+          this.noResultsMessage = "You have not viewed any products lately!";
+        }
+      }
+    });
+  }
 
   ngOnInit(): void {
-    this.productSKU = this.activatedRoute.snapshot.params["product"];
+    this.bestBuyService
+      .getSingleProduct(this.productSKU)
+      .subscribe((results: CommonPortalData) => {
+        if (results !== null) {
+          this.similarProductSkus = results.productVariations.map(
+            (productVariation) => Number.parseInt(productVariation.sku)
+          );
 
-    this.bestBuyService.getSingleProduct(this.productSKU).subscribe(
-      (result: CommonPortalData) => {
-        if (result !== null) {
-          this.productData = result;
+          this.bestBuyService
+            .getProductsByIds(this.similarProductSkus)
+            .subscribe((products: CommonProductsAPIData) => {
+              if (products !== null) {
+                this.similarProducts = products.products;
+              }
+            });
         }
-      },
-      (err) => {
-        console.error(err);
-        this.noResultsMessage = "No image avaliable yet.";
-      }
-    );
-
-    this.bestBuyService.getPortalProducts(this.offerTypes.shift()).subscribe(
-      (results: CommonProductsAPIData) => {
-        if (results != null) {
-          this.featuredProducts = results.products;
-        }
-      },
-      (err) => {
-        console.error(err);
-        this.noResultsMessage =
-          "No products to display. Please try again later!";
-      }
-    );
+      });
   }
 }
