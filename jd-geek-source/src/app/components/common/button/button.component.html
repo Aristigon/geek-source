@@ -1,17 +1,12 @@
-<!-- <ng-container *ngTemplateOutlet="buttonConfig['text'] ? text : image">
-</ng-container> -->
-
-<!-- Text Button -->
-<button type="button" [class]="buttonClass" [routerLink]="buttonLink">
+<button *ngIf="!routerLink" type="button" [class]="buttonClass">
   {{ buttonText }}
 </button>
 
-<!-- Image Button -->
-<!-- <ng-template #image>
-  <img
-    alt="image button"
-    [src]="buttonConfig.src"
-    [ngStyle]="buttonConfig.styles"
-    (click)="onImageBtnClick()"
-  />
-</ng-template> -->
+<button
+  *ngIf="routerLink"
+  type="button"
+  [class]="buttonClass"
+  [routerLink]="buttonLink"
+>
+  {{ buttonText }}
+</button>

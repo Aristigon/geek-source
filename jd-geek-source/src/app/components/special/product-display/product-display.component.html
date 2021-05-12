@@ -55,12 +55,19 @@
         >was {{ productData.regularPrice | currency }}</span
       >
     </div>
-    <div class="mainGutterDrop">
+    <div class="mainGutterDrop flex addToButtons">
       <app-button
         buttonTextCase="upper"
         buttonClass="ovalRedText"
         buttonText="ADD TO CART"
         buttonLink="home"
+      ></app-button>
+      <app-button
+        buttonTextCase="upper"
+        buttonClass="ovalRedText"
+        buttonText="add to favorite"
+        routerLink="false"
+        (click)="addToFavorites(productData.sku)"
       ></app-button>
     </div>
   </div>

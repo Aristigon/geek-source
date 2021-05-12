@@ -2,6 +2,7 @@
 /* eslint-disable no-magic-numbers */
 import { AfterContentChecked, Component, Input } from "@angular/core";
 import { CommonPortalData } from "src/app/models/commonPortalData.interface";
+import { UtilService } from "src/app/services/util.service";
 
 @Component({
   selector: "app-product-display",
@@ -12,6 +13,8 @@ export class ProductDisplayComponent implements AfterContentChecked {
   @Input() productData: CommonPortalData;
   slides: any;
   slideIndex = 1;
+
+  constructor(private utilService: UtilService) {}
 
   ngAfterContentChecked(): void {
     this.slides = document.getElementsByClassName("slide");
@@ -42,7 +45,20 @@ export class ProductDisplayComponent implements AfterContentChecked {
     );
   }
 
-  nextSlide(slideChange: number) {
+  nextSlide(slideChange: number): void {
     this.showSlides((this.slideIndex += slideChange));
+  }
+
+  addToFavorites(productSku: number): void {
+    let saves: string[] = [];
+
+    if (this.utilService.getItems_Local("saveItem") !== null) {
+      saves = this.utilService.getItems_Local("saveItem").split(",");
+    }
+
+    if (!saves.includes(productSku.toString())) {
+      saves.push(productSku.toString());
+    }
+    this.utilService.saveItem_Local("saveItem", saves.toString());
   }
 }

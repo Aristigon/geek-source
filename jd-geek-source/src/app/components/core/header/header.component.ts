@@ -4,6 +4,7 @@ import { Component, OnInit } from "@angular/core";
 import { Categories } from "src/app/models/Categories.interface";
 import { CommonPortalData } from "src/app/models/commonPortalData.interface";
 import { BestBuyService } from "src/app/services/best-buy.service";
+import { UtilService } from "src/app/services/util.service";
 import * as testing from "../../../../assets/testingProductIds.json";
 import { DropDownLink } from "src/app/models/drop-down-link.interface";
 import { CommonProductsAPIData } from "src/app/models/commonProductsAPIData.interface";
@@ -17,7 +18,7 @@ import * as configs from "../../../../assets/config.json";
 export class HeaderComponent implements OnInit {
   productData: CommonPortalData[];
   recentlyViewedInput: number[] = [];
-  savedItemsProducts = [];
+  savedItemsProducts: number[] = [];
   menuItems: DropDownLink[] = [];
   displayProductsCarousel = false;
   displayCategoryMenu = true;
@@ -28,7 +29,10 @@ export class HeaderComponent implements OnInit {
   };
   exitingMenuButton = true;
 
-  constructor(private bestBuyService: BestBuyService) {}
+  constructor(
+    private bestBuyService: BestBuyService,
+    private utilService: UtilService
+  ) {}
 
   ngOnInit(): void {
     this.bestBuyService.getTopLevelCategories(configs.categories).subscribe(
@@ -61,14 +65,10 @@ export class HeaderComponent implements OnInit {
   }
 
   getProductSelection(productSelection: string): void {
-    /*
-     * Testing is fake data to test the functionality.
-     * Tracking code will be added later to track the recently viewed and saved itmes.
-     */
     if (productSelection === this.productSelectionTypes.recent) {
       this.productData = [];
 
-      const recent = localStorage.getItem("recently").split(",");
+      const recent = this.utilService.getItems_Local("recently").split(",");
 
       this.recentlyViewedInput = recent.map((x) => Number.parseInt(x));
 
@@ -97,8 +97,12 @@ export class HeaderComponent implements OnInit {
     } else if (productSelection === this.productSelectionTypes.saved) {
       this.productData = [];
 
-      if (testing.saved_items_ids.length > 0) {
-        this.bestBuyService.getProductsByIds(testing.saved_items_ids).subscribe(
+      const recent = this.utilService.getItems_Local("saveItem").split(",");
+
+      this.savedItemsProducts = recent.map((x) => Number.parseInt(x));
+
+      if (this.savedItemsProducts.length > 0) {
+        this.bestBuyService.getProductsByIds(this.savedItemsProducts).subscribe(
           (results: CommonProductsAPIData) => {
             if (results.products.length > 0) {
               this.productData = results.products;

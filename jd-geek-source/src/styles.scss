@@ -6,6 +6,10 @@
   display: flex;
 }
 
+.spaceBetween {
+  justify-content: space-between;
+}
+
 body {
   background-color: $primary;
   color: $white;

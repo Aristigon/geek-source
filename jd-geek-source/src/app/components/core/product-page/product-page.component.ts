@@ -1,3 +1,4 @@
+/* eslint-disable max-params */
 /* eslint-disable no-magic-numbers */
 /* eslint-disable dot-notation */
 import { Component, Input, OnInit } from "@angular/core";
@@ -8,6 +9,7 @@ import {
 } from "src/app/models/commonPortalData.interface";
 import { CommonProductsAPIData } from "src/app/models/commonProductsAPIData.interface";
 import { BestBuyService } from "src/app/services/best-buy.service";
+import { UtilService } from "src/app/services/util.service";
 
 @Component({
   selector: "app-product-page",
@@ -28,7 +30,8 @@ export class ProductPageComponent implements OnInit {
   constructor(
     private bestBuyService: BestBuyService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private utilService: UtilService
   ) {
     this.router.events.subscribe((val) => {
       if (val instanceof NavigationEnd) {
@@ -45,7 +48,7 @@ export class ProductPageComponent implements OnInit {
           }
         );
 
-        const recent = localStorage.getItem("recently").split(",");
+        const recent = this.utilService.getItems_Local("recently").split(",");
 
         this.recentlyViewedInput = recent.map((x) => Number.parseInt(x));
 

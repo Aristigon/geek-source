@@ -12,7 +12,7 @@
               (click)="linkToProductPage(product.sku)"
             />
           </div>
-          <div style="height: fit-content">{{ product.name }}</div>
+          <div class="productName">{{ product.name }}</div>
           <div class="reviews">
             <app-product-ratings
               [productRating]="product.customerReviewAverage"
@@ -20,12 +20,17 @@
             {{ product.customerReviewAverage }}
             ({{ product.customerReviewCount }})
           </div>
-          <div>
-            {{ product.salePrice }}
-            <app-cart-plus-icon></app-cart-plus-icon>
-          </div>
-          <div>
-            {{ product.regularPrice }}
+          <div class="prices">
+            <div>
+              {{ product.salePrice | currency }}
+              <app-cart-plus-icon
+                class="salePrice"
+                iconSize="lg"
+              ></app-cart-plus-icon>
+            </div>
+            <div class="regularPrice">
+              {{ product.regularPrice | currency }}
+            </div>
           </div>
         </section>
       </div>

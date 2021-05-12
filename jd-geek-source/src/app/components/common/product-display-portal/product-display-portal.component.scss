@@ -2,6 +2,7 @@
 @import "../../../../constants/sizing.scss";
 @import "../../../../constants/gutters.scss";
 
+$boxHeight: 380px;
 .imageBox {
   justify-content: center;
   align-content: center;
@@ -20,15 +21,11 @@
   transform: scale(0.55);
 }
 
-.flex {
-  display: flex;
-}
-
 .portalShroud {
   position: absolute;
   box-sizing: border-box;
   width: $maxContentWidth;
-  height: 250px;
+  height: $boxHeight;
   background: linear-gradient(
     to right,
     transparent 0%,
@@ -36,13 +33,14 @@
     $white 100%
   );
   pointer-events: none;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
 .portalView {
   background-color: $white;
   box-sizing: border-box;
   width: $maxContentWidth;
-  height: 300px;
+  height: $boxHeight;
   border: 1px solid $white;
   flex-flow: column nowrap;
 }
@@ -61,17 +59,40 @@
 .portalProduct {
   min-width: 200px;
   max-width: 200px;
-  min-height: 160px;
-  height: 160px;
+  min-height: 200px;
+  height: 200px;
   margin: 10px;
   margin: $halfGutter $mainGutter $halfGutter $mainGutter;
   flex-flow: column nowrap;
 }
 
+.productName {
+  height: 50px;
+  max-height: 50px;
+  min-height: 50px;
+  color: $primaryDark;
+  font-size: 10pt;
+}
+
 .reviews {
+  margin-top: $halfGutter;
   color: $secondary;
 }
 
+.prices {
+  margin-top: $halfGutter;
+  color: $primaryDark;
+  font-size: 10pt;
+}
+
+.salePrice {
+  padding-left: $halfGutter;
+}
+
+.regularPrice {
+  text-decoration: line-through;
+  color: $grey;
+}
 .carouselNavigations {
   margin-top: 10px;
   margin-right: 50px;

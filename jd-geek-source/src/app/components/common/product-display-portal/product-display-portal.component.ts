@@ -1,13 +1,8 @@
 /* eslint-disable no-magic-numbers */
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  Output,
-} from "@angular/core";
+import { Component, Input, OnChanges } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { CommonPortalData } from "src/app/models/commonPortalData.interface";
+import { UtilService } from "src/app/services/util.service";
 
 const RIGHT_SCROLL_STOP = 0;
 
@@ -17,11 +12,6 @@ const RIGHT_SCROLL_STOP = 0;
   styleUrls: ["./product-display-portal.component.scss"],
 })
 export class ProductDisplayPortalComponent implements OnChanges {
-  ngOnChanges(): void {
-    if (this.productData) {
-      this.displayProducts = this.productData.length > 0;
-    }
-  }
   @Input() productData: CommonPortalData[];
   @Input() carouselID: string;
   @Input() errorMessage: string;
@@ -34,8 +24,13 @@ export class ProductDisplayPortalComponent implements OnChanges {
   activatedRoute: ActivatedRoute;
   recentlyViewed: number[] = [];
 
-  constructor(public router: Router) {}
+  constructor(public router: Router, private utilService: UtilService) {}
 
+  ngOnChanges(): void {
+    if (this.productData) {
+      this.displayProducts = this.productData.length > 0;
+    }
+  }
   leftScroll(scrollAmount: number, elementId: string): void {
     const carouselElement = document.getElementById(elementId);
     const maxScroll = carouselElement.scrollWidth - carouselElement.clientWidth;
@@ -66,6 +61,13 @@ export class ProductDisplayPortalComponent implements OnChanges {
   }
 
   linkToProductPage(productSKU: number): void {
+    const recent = this.utilService.getItems_Local("recently");
+
+    if (recent !== null) {
+      this.recentlyViewed = recent.split(",").map((x) => Number.parseInt(x));
+      console.log(this.recentlyViewed);
+    }
+
     if (!this.recentlyViewed.includes(productSKU)) {
       if (this.recentlyViewed.length === 10) {
         this.recentlyViewed.pop();
@@ -73,7 +75,8 @@ export class ProductDisplayPortalComponent implements OnChanges {
       this.recentlyViewed.push(productSKU);
     }
 
-    localStorage.setItem("recently", this.recentlyViewed.toString());
+    this.utilService.saveItem_Local("recently", this.recentlyViewed.toString());
+
     this.router.navigateByUrl(`product/${productSKU}`);
   }
 }

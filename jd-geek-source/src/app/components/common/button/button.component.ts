@@ -10,6 +10,7 @@ export class ButtonComponent implements OnInit {
   @Input() buttonClass: string;
   @Input() buttonText: string;
   @Input() buttonLink: string;
+  @Input() routerLink = true;
 
   ngOnInit(): void {
     if (this.buttonTextCase === "lower") {
