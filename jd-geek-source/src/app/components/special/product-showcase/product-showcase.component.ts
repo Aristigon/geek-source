@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { CommonPortalData } from "src/app/models/commonPortalData.interface";
 
 @Component({
@@ -8,4 +8,5 @@ import { CommonPortalData } from "src/app/models/commonPortalData.interface";
 })
 export class ProductShowcaseComponent {
   @Input() productData: CommonPortalData;
+  @Input() shoppingCart: false;
 }

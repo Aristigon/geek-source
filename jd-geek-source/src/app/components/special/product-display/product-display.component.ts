@@ -1,6 +1,12 @@
 /* eslint-disable no-undefined */
 /* eslint-disable no-magic-numbers */
-import { AfterContentChecked, Component, Input } from "@angular/core";
+import {
+  AfterContentChecked,
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+} from "@angular/core";
 import { CommonPortalData } from "src/app/models/commonPortalData.interface";
 import { UtilService } from "src/app/services/util.service";
 
@@ -49,16 +55,16 @@ export class ProductDisplayComponent implements AfterContentChecked {
     this.showSlides((this.slideIndex += slideChange));
   }
 
-  addToFavorites(productSku: number): void {
+  addSaveTo(localSave: string, productSku: number): void {
     let saves: string[] = [];
 
-    if (this.utilService.getItems_Local("saveItem") !== null) {
-      saves = this.utilService.getItems_Local("saveItem").split(",");
+    if (this.utilService.getItems_Local(localSave) !== null) {
+      saves = this.utilService.getItems_Local(localSave).split(",");
     }
 
     if (!saves.includes(productSku.toString())) {
       saves.push(productSku.toString());
     }
-    this.utilService.saveItem_Local("saveItem", saves.toString());
+    this.utilService.saveItem_Local(localSave, saves.toString());
   }
 }

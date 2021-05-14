@@ -10,9 +10,9 @@
     <span class="numberOfProducts">{{ totalNumberOfProducts }} items</span>
   </div>
   <div class="showProducts" (scroll)="scrollDetect($event)">
-    <app-product-showcase
-      [productData]="product"
-      *ngFor="let product of productData"
-    ></app-product-showcase>
+    <div class="productTile" *ngFor="let product of productData">
+      <div class="productTileDivder" name="lineDivider"></div>
+      <app-product-showcase [productData]="product"></app-product-showcase>
+    </div>
   </div>
 </div>

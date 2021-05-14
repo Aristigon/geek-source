@@ -18,15 +18,14 @@ $imageHeight: 100px;
 
 .productMain {
   position: relative;
-  margin: 0 ($doubleGutter * 2) $mainGutter $mainGutter;
+  margin-bottom: $mainGutter;
   height: fit-content;
   background-color: $white;
   color: $menuText;
   justify-content: space-between;
-  border-top: 2px solid $grey;
 }
 .leftSideBox {
-  margin: $mainGutter;
+  margin: $mainGutter $mainGutter $mainGutter $mainGutter;
   min-width: 250px;
   min-height: 180px;
   height: 180px;
@@ -39,11 +38,11 @@ $imageHeight: 100px;
   width: 100%;
   max-width: fit-content;
   height: 100%;
-  // max-height:fit-content;
-  padding: $mainGutter;
+  padding: $mainGutter $mainGutter $mainGutter 0;
 }
 .rightSideData {
   margin-top: $mainGutter;
+  width: 500px;
 }
 .headerName {
   font-size: x-large;

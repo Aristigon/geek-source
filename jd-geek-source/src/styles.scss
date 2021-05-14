@@ -6,6 +6,9 @@
   display: flex;
 }
 
+.flexColumn {
+  flex-flow: column nowrap;
+}
 .spaceBetween {
   justify-content: space-between;
 }
@@ -35,4 +38,13 @@ body {
   width: $doubleGutter;
   min-width: $doubleGutter;
   max-width: $doubleGutter;
+}
+
+.productTileDivder {
+  border-top: 2px solid $grey;
+}
+
+.mainGutterSides {
+  margin-left: $mainGutter;
+  margin-right: $mainGutter;
 }

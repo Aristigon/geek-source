@@ -68,9 +68,14 @@ export class HeaderComponent implements OnInit {
     if (productSelection === this.productSelectionTypes.recent) {
       this.productData = [];
 
-      const recent = this.utilService.getItems_Local("recently").split(",");
+      if (
+        this.utilService.getItems_Local("recently") !== null &&
+        this.utilService.getItems_Local("recently").length > 0
+      ) {
+        const recent = this.utilService.getItems_Local("recently").split(",");
 
-      this.recentlyViewedInput = recent.map((x) => Number.parseInt(x));
+        this.recentlyViewedInput = recent.map((x) => Number.parseInt(x));
+      }
 
       if (this.recentlyViewedInput.length > 0) {
         this.bestBuyService

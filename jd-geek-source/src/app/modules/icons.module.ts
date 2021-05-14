@@ -17,6 +17,9 @@ import { CCVisaIconComponent } from "../components/icons/cc-visa-icon/cc-visa-ic
 import { CcMastercardIconComponent } from "../components/icons/cc-mastercard-icon/cc-mastercard-icon.component";
 import { CcAmexIconComponent } from "../components/icons/cc-amex-icon/cc-amex-icon.component";
 import { CcApplePayIconComponent } from "../components/icons/cc-apple-pay-icon/cc-apple-pay-icon.component";
+import { RecycleIconComponent } from "../components/icons/recycle-icon/recycle-icon.component";
+import { SquareIconComponent } from "../components/icons/square-icon/square-icon.component";
+import { CheckSquareIconComponent } from "../components/icons/check-square-icon/check-square-icon.component";
 
 @NgModule({
   declarations: [
@@ -36,6 +39,9 @@ import { CcApplePayIconComponent } from "../components/icons/cc-apple-pay-icon/c
     CcMastercardIconComponent,
     CcAmexIconComponent,
     CcApplePayIconComponent,
+    RecycleIconComponent,
+    SquareIconComponent,
+    CheckSquareIconComponent,
   ],
   exports: [
     SearchIconComponent,
@@ -54,6 +60,9 @@ import { CcApplePayIconComponent } from "../components/icons/cc-apple-pay-icon/c
     CcMastercardIconComponent,
     CcAmexIconComponent,
     CcApplePayIconComponent,
+    RecycleIconComponent,
+    SquareIconComponent,
+    CheckSquareIconComponent,
   ],
   imports: [CommonModule, FontAwesomeModule],
 })

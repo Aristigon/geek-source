@@ -12,6 +12,10 @@ export class UtilService {
     return localStorage.getItem(saveKey);
   }
 
+  removeItem_Local(key: string): void {
+    localStorage.removeItem(key);
+  }
+
   saveItem_Session(saveKey: string, productSku: string): void {
     sessionStorage.setItem(saveKey, productSku);
   }

@@ -1,0 +1,105 @@
+<div class="flex mainSection">
+  <div class="flex mainHeader">
+    <app-sectionheader
+      fontSize="large"
+      featureStyle="redTheme"
+      textStyle="redTheme"
+      titleText="Shopping Cart"
+    >
+    </app-sectionheader>
+    <div class="totalCartItems">{{ shoppingCartItemTotal }} items</div>
+  </div>
+  <div class="flex flexColumn showProducts">
+    <div
+      class="flex productTileDivder spaceBetween"
+      *ngFor="let product of shoppingCartItems"
+    >
+      <app-product-showcase
+        [productData]="product"
+        shoppingCart="true"
+      ></app-product-showcase>
+      <div class="flex spaceBetween removeItem">
+        <span>remove</span>
+        <app-recycle-icon
+          iconSize="lg"
+          (click)="removeItem(product.sku)"
+        ></app-recycle-icon>
+      </div>
+    </div>
+  </div>
+  <div class="flex flexColumn">
+    <div class="productTileDivder mainGutterSides"></div>
+    <div class="cartInfoSection flex">
+      <div name="cartTotal" class="flex doubleGutterDrop">
+        <span class="largeWording">Cart Total</span>
+        <span class="cartTotal">{{ totalCartCost | currency }}</span>
+      </div>
+      <div name="shippingInfo" class="flex doubleGutterDrop">
+        <span class="largeWording">Shipping Info</span>
+        <div class="flex infoWordStyle">
+          <div class="flex flexColumn">
+            <span>first name</span>
+            <input type="text" name="firstName" id="firstName" />
+            <span>address</span>
+            <input type="text" name="address" id="address" />
+            <span>state</span>
+            <input type="text" name="state" id="state" />
+          </div>
+          <div class="flex flexColumn">
+            <span>last name</span>
+            <input type="text" name="lastName" id="lastName" />
+            <span>city</span>
+            <input type="text" name="city" id="city" />
+            <span>zip</span>
+            <input type="text" name="zip" id="zip" />
+          </div>
+        </div>
+      </div>
+      <div name="billingInfo" class="flex doubleGutterDrop">
+        <span class="largeWording">Billing Info</span>
+        <div class="flex flexColumn">
+          <div class="flex sameAsShipping">
+            <app-square-icon
+              iconSize="3x"
+              *ngIf="!sameAsShipping"
+              (click)="billingShippingSame()"
+            ></app-square-icon>
+            <app-check-square-icon
+              iconSize="3x"
+              *ngIf="sameAsShipping"
+              (click)="billingShippingSame()"
+            ></app-check-square-icon>
+            <div class="flex sameAsShippingText">same as shipping</div>
+          </div>
+          <div class="flex infoWordStyle" *ngIf="!sameAsShipping">
+            <div class="flex flexColumn">
+              <span>first name</span>
+              <input type="text" name="firstName" id="firstNameB" />
+              <span>address</span>
+              <input type="text" name="address" id="addressB" />
+              <span>state</span>
+              <input type="text" name="state" id="stateB" />
+            </div>
+            <div class="flex flexColumn">
+              <span>last name</span>
+              <input type="text" name="lastName" id="lastNameB" />
+              <span>city</span>
+              <input type="text" name="city" id="cityB" />
+              <span>zip</span>
+              <input type="text" name="zip" id="zipB" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-button
+      class="checkout"
+      buttonTextCase="upper"
+      buttonClass="ovalRedText"
+      buttonText="checkout"
+    ></app-button>
+  </div>
+</div>
+<div>
+  <app-serviceiconsbar></app-serviceiconsbar>
+</div>

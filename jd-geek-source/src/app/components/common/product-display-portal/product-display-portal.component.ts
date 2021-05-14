@@ -65,7 +65,6 @@ export class ProductDisplayPortalComponent implements OnChanges {
 
     if (recent !== null) {
       this.recentlyViewed = recent.split(",").map((x) => Number.parseInt(x));
-      console.log(this.recentlyViewed);
     }
 
     if (!this.recentlyViewed.includes(productSKU)) {

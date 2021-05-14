@@ -16,18 +16,18 @@
   overflow: hidden;
   overflow-x: hidden;
   overflow-y: hidden;
-  //width: ($maxContentWidth / 2) + ($doubleGutter * 5);
+
 }
 
 .sectionHeader {
-  margin-top: $halfGutter;
+  margin-top: $mainGutter;
   margin-left: $mainGutter;
 }
 
 .numberOfProducts {
   color: black;
   font-size: medium;
-  margin-top: 40px;
+  margin-top: 20px;
   margin-left: $mainGutter;
 }
 
@@ -37,4 +37,10 @@
   overflow-y: scroll;
   padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
   box-sizing: content-box; /* So the width will be 100% + 17px */
+}
+
+.productTile {
+  margin-left: $mainGutter;
+  margin-right: $mainGutter;
+  width: 800px;
 }

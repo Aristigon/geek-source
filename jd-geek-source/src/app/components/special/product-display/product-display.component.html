@@ -60,14 +60,15 @@
         buttonTextCase="upper"
         buttonClass="ovalRedText"
         buttonText="ADD TO CART"
-        buttonLink="home"
+        routerLink="false"
+        (click)="addSaveTo('shoppingCartItems', productData.sku)"
       ></app-button>
       <app-button
         buttonTextCase="upper"
         buttonClass="ovalRedText"
         buttonText="add to favorite"
         routerLink="false"
-        (click)="addToFavorites(productData.sku)"
+        (click)="addSaveTo('saveItem', productData.sku)"
       ></app-button>
     </div>
   </div>

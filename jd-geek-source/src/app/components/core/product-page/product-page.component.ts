@@ -1,7 +1,8 @@
+/* eslint-disable no-undefined */
 /* eslint-disable max-params */
 /* eslint-disable no-magic-numbers */
 /* eslint-disable dot-notation */
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
 import {
   CommonPortalData,
@@ -27,6 +28,9 @@ export class ProductPageComponent implements OnInit {
   productImages: ProductImage[] = [];
   recentlyViewedInput: number[] = [];
 
+  @Input() totalCartNumberInput: number;
+  @Output() totalCartNumberOutput: EventEmitter<number>;
+
   constructor(
     private bestBuyService: BestBuyService,
     private activatedRoute: ActivatedRoute,
@@ -48,11 +52,19 @@ export class ProductPageComponent implements OnInit {
           }
         );
 
-        const recent = this.utilService.getItems_Local("recently").split(",");
+        if (
+          this.utilService.getItems_Local("recently") !== null &&
+          this.utilService.getItems_Local("recently").length > 0
+        ) {
+          const recent = this.utilService.getItems_Local("recently").split(",");
 
-        this.recentlyViewedInput = recent.map((x) => Number.parseInt(x));
+          this.recentlyViewedInput = recent.map((x) => Number.parseInt(x));
+        }
 
-        if (this.recentlyViewedInput.length > 0) {
+        if (
+          this.recentlyViewedInput !== null &&
+          this.recentlyViewedInput.length > 0
+        ) {
           this.bestBuyService
             .getProductsByIds(this.recentlyViewedInput)
             .subscribe(
@@ -86,13 +98,20 @@ export class ProductPageComponent implements OnInit {
             (productVariation) => Number.parseInt(productVariation.sku)
           );
 
-          this.bestBuyService
-            .getProductsByIds(this.similarProductSkus)
-            .subscribe((products: CommonProductsAPIData) => {
-              if (products !== null) {
-                this.similarProducts = products.products;
-              }
-            });
+          if (
+            this.similarProductSkus !== null &&
+            this.similarProductSkus.length > 0
+          ) {
+            this.bestBuyService
+              .getProductsByIds(this.similarProductSkus)
+              .subscribe((products: CommonProductsAPIData) => {
+                if (products !== null) {
+                  this.similarProducts = products.products;
+                }
+              });
+          } else {
+            this.noResultsMessage = "There are no similar products to display.";
+          }
         }
       });
   }

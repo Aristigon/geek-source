@@ -1,0 +1,94 @@
+@import "../../../../constants/color.scss";
+@import "../../../../constants/sizing.scss";
+@import "../../../../constants/gutters.scss";
+
+.mainSection {
+  margin-top: $mainGutter;
+  width: $maxContentWidth;
+  height: 1600px;
+  background-color: $white;
+  flex-flow: column nowrap;
+  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.mainHeader {
+  padding: $mainGutter;
+  width: 200px;
+  height: 50px;
+  justify-content: space-between;
+}
+
+.totalCartItems {
+  color: $primaryDark;
+  margin-top: 20px;
+}
+
+.showProducts {
+  margin-left: $mainGutter;
+  width: $maxContentWidth - $doubleGutter;
+  height: 500px;
+  overflow-y: scroll;
+  padding-right: 60px; /* Increase/decrease this value for cross-browser compatibility */
+  box-sizing: content-box; /* So the width will be 100% + 17px */
+}
+
+.removeItem {
+  width: 70px;
+  color: $secondary;
+  margin-top: $mainGutter;
+  margin-right: $doubleGutter;
+}
+
+.cartInfoSection {
+  //margin-top: $doubleGutter;
+  margin-left: $doubleGutter * 2;
+  width: $maxContentWidth - ($doubleGutter * 5);
+  flex-flow: column nowrap;
+}
+
+.largeWording {
+  font-size: xx-large;
+  color: $primaryDark;
+  width: 140px;
+  min-width: 140px;
+  margin-right: $mainGutter;
+}
+
+.cartTotal {
+  font-size: xx-large;
+  color: $secondary;
+}
+
+.infoWordStyle {
+  color: $grey;
+}
+
+.sameAsShipping {
+  color: $primaryDark;
+  margin-bottom: $mainGutter;
+}
+
+.sameAsShippingText {
+  padding-left: 5px;
+  height: 30px;
+  min-height: 30px;
+  width: 120px;
+  align-items: center;
+}
+
+input[type=text] {
+  outline: none;
+  border: 0;
+  border-bottom: 1px solid $grey;
+  font-size: xx-large;
+  margin-right: $mainGutter;
+  margin-bottom: $mainGutter;
+  width: 300px;
+}
+
+.checkout {
+  margin-top: $doubleGutter;
+  margin-left: $doubleGutter * 5;
+}
