@@ -1,6 +1,6 @@
 /* eslint-disable no-magic-numbers */
 import { Component, Input, OnChanges } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Router } from "@angular/router";
 import { CommonPortalData } from "src/app/models/commonPortalData.interface";
 import { UtilService } from "src/app/services/util.service";
 
@@ -21,7 +21,6 @@ export class ProductDisplayPortalComponent implements OnChanges {
   maxScroll: number;
   scrollTracker = RIGHT_SCROLL_STOP;
   displayProducts = true;
-  activatedRoute: ActivatedRoute;
   recentlyViewed: number[] = [];
 
   constructor(public router: Router, private utilService: UtilService) {}

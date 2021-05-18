@@ -1,22 +1,37 @@
 @import "../../../../constants/color.scss";
+@import "../../../../constants/gutters.scss";
+@import "../../../../constants/sizing.scss";
 
-.ovalRedText {
-  position: 'relative';
-  width: 250px;
-  height: 60px;
-  background-color: $secondary;
-  color: $white;
-  font-size: 20px;
-  border-radius: 30px;
-  border: none;
-}
+$largeWidth: 250px;
+$largeHeight: 60px;
+$largeFontSize: 20px;
 
-.default {
-  position: relative;
-  width: 250px;
-  height: 60px;
-  background-color: $white;
-  color: $menuText;
-  font-size: 20px;
-  border: none;
+.buttonStyle {
+  &-primary {
+    position: 'relative';
+    border: none;
+  }
+
+  &--redOval {
+    background-color: $secondary;
+    color: $white;
+    border-radius: 30px;
+  }
+
+  &--whiteReg {
+    background-color: $white;
+    color: $menuText;
+  }
+
+  &--large {
+    width: $largeWidth;
+    height: $largeHeight;
+    font-size: $largeFontSize;
+  }
+
+  &--smaller {
+    width: $largeWidth * .9;
+    height: $largeHeight * .9;
+    font-size: $largeFontSize  * .9;
+  }
 }

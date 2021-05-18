@@ -38,13 +38,16 @@ export class CategoryPageComponent implements OnInit {
       this.searchProducts = `categoryPath.id=${this.activatedRoute.snapshot.params["searchProducts"]}`;
       this.categoryID = this.activatedRoute.snapshot.params["searchProducts"];
 
-      this.bestBuyService
-        .getCategoryNameById(this.categoryID)
-        .subscribe((catName) => {
+      this.bestBuyService.getCategoryNameById(this.categoryID).subscribe(
+        (catName) => {
           if (catName !== null) {
             this.categoryName = catName.categories[0].name;
           }
-        });
+        },
+        (err) => {
+          console.error(err);
+        }
+      );
     }
 
     this.bestBuyService

@@ -13,6 +13,7 @@ export class FooterComponent implements OnInit {
   menuItems: DropDownLink[] = [];
   noResultsMessage: string;
   displayCategoryMenu: boolean;
+  iconSize = "4x";
   constructor(private bestBuyService: BestBuyService) {}
 
   ngOnInit(): void {

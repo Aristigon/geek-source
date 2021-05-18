@@ -92,3 +92,8 @@ input[type=text] {
   margin-top: $doubleGutter;
   margin-left: $doubleGutter * 5;
 }
+
+.serviceBarSpacing {
+  margin-top: $doubleGutter;
+  margin-bottom: $mainGutter;
+}

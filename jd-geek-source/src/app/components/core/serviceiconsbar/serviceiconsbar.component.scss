@@ -4,7 +4,8 @@
 
 .purchasePerksMain {
   justify-content: space-between;
-  margin-top: $mainGutter;
+  margin-left: $mainGutter;
+  margin-right: $doubleGutter * 1.5;
   color: $primaryLight;
 }
 

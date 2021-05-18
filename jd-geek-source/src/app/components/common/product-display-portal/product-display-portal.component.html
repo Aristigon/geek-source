@@ -3,13 +3,16 @@
   <div class="flex portalView">
     <div class="flex carouselContainer">
       <div id="{{ carouselID }}" class="flex carousel">
-        <section class="flex portalProduct" *ngFor="let product of productData">
+        <section
+          class="flex portalProduct"
+          *ngFor="let product of productData"
+          (click)="linkToProductPage(product.sku)"
+        >
           <div class="flex imageBox">
             <img
               class="imageSize"
               src="{{ product.image }}"
               alt="{{ product.name }}"
-              (click)="linkToProductPage(product.sku)"
             />
           </div>
           <div class="productName">{{ product.name }}</div>

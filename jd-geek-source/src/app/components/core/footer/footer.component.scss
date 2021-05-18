@@ -7,9 +7,10 @@
 }
 
 .footerSpace {
-  width: $maxContentWidth;
+  width: $maxContentWidth - $doubleGutter;
   height: 370px;
   background-color: $primaryDark;
+  margin-left: $mainGutter;
 }
 
 .footerColumns {
@@ -19,13 +20,17 @@
   justify-content: space-between;
 }
 
+.columnSpacing {
+  margin-top: 10px;
+}
+
 .columnTitle {
   font-size: large;
 }
 
 .shop-menu-content {
   display: block;
-  margin-top: 5px;
+  margin-top: 10px;
   font-size: medium;
   width: max-content;
   line-height: $mainLineHeight;
@@ -40,10 +45,6 @@
   a:hover {
     background-color: #dddddd;
   }
-}
-
-.flexColumns {
-  flex-flow: column nowrap;
 }
 
 .flexSpacing {
@@ -65,6 +66,19 @@ hr.footerDivider {
   color: $primaryLight;
 }
 
-.searchBoxText {
+.shoppingCartColumn {
+  width: 290px;
+  justify-content: right;
+}
+.shoppingCartText {
   color: $white;
+  font-size: medium;
+  margin-left: $doubleGutter + $mainGutter + $halfGutter;
+  margin-bottom: $doubleGutter;
+  width: 250px;
+  top: 100px;
+}
+
+.iconColor {
+  color: $primaryLight;
 }

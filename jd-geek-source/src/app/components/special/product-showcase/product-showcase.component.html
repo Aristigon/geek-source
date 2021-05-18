@@ -1,4 +1,9 @@
-<div *ngIf="productData !== undefined" class="flex productMain">
+<div
+  id="showcase"
+  *ngIf="productData !== undefined"
+  class="flex productMain"
+  (click)="linkToProductPage(productData.sku, $event)"
+>
   <div class="flex leftSideBox">
     <img
       class="leftSideImage"
@@ -42,9 +47,10 @@
       </div>
       <app-button
         buttonTextCase="upper"
-        buttonClass="ovalRedText"
+        buttonClass="buttonStyle-primary buttonStyle--redOval buttonStyle--smaller"
         buttonText="ADD TO CART"
-        buttonLink="home"
+        routerLink="false"
+        (click)="addSaveTo('shoppingCartItems', productData.sku)"
         *ngIf="!shoppingCart"
       ></app-button>
     </div>
