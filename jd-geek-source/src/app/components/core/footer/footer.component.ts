@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { Categories } from "src/app/models/Categories.interface";
 import { DropDownLink } from "src/app/models/drop-down-link.interface";
 import { BestBuyService } from "src/app/services/best-buy.service";
@@ -10,6 +10,7 @@ import * as configs from "../../../../assets/config.json";
   styleUrls: ["./footer.component.scss"],
 })
 export class FooterComponent implements OnInit {
+  @Input() mobileSite = false;
   menuItems: DropDownLink[] = [];
   noResultsMessage: string;
   displayCategoryMenu: boolean;
