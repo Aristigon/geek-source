@@ -1,26 +1,46 @@
 @import "../../../../constants/color.scss";
 @import "../../../../constants/gutters.scss";
+@import "../../../../constants/sizing.scss";
 
 .flex {
   display: flex;
 }
 .headerMain {
-  height: 100px;
-  align-items: center;
-  flex-direction: column;
+  &-primary {
+    align-items: center;
+    flex-direction: column;
+  }
+
+  &--desktop {
+    height: 100px;
+  }
+
+  &--mobile {
+    height: 60px;
+  }
 }
 
 .topHeader {
-  width: 100%;
-  background-color: $white;
-  color: $secondary;
-  margin-bottom: 2px;
-  flex: 3;
+  &-primary {
+    //max-width: $maxContentWidth;
+    max-height: 60px;
+    background-color: $white;
+    color: $secondary;
+    margin-bottom: 2px;
+    align-items: center;
+  }
+
+  &--desktop {
+    width: 100%;
+    max-width: $maxContentWidth;
+  }
+
+  &--mobile {
+    width: max-content;
+    max-width: $maxContentWidth / 2;
+  }
 }
 
-.topHeader2 {
-  align-items: center;
-}
 .logoItem {
   margin-left: $mainGutter;
   justify-content: flex-start;

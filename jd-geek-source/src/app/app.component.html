@@ -1,6 +1,10 @@
-<div class="content" role="main">
+<div
+  class="flex content-primary"
+  [ngClass]="mobileSite ? 'content--mobile' : 'content--desktop'"
+  role="main"
+>
   <div class="header">
-    <app-header></app-header>
+    <app-header [mobileMenu]="mobileSite"></app-header>
   </div>
   <div class="routerContent">
     <router-outlet></router-outlet>

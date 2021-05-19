@@ -1,7 +1,8 @@
 /* eslint-disable no-magic-numbers */
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input, HostListener } from "@angular/core";
 import { CommonPortalData } from "src/app/models/commonPortalData.interface";
 import { CommonProductsAPIData } from "src/app/models/commonProductsAPIData.interface";
+import { MOBILE_SCREEN_THRESHOLD } from "src/constants/constants";
 import { BestBuyService } from "../../../services/best-buy.service";
 
 @Component({
@@ -10,6 +11,7 @@ import { BestBuyService } from "../../../services/best-buy.service";
   styleUrls: ["./home.component.scss"],
 })
 export class HomeComponent implements OnInit {
+  mobileSite = false;
   featuredProducts: CommonPortalData[];
   todaysDeals: CommonPortalData[];
   noResultsMessage: string;
@@ -18,6 +20,12 @@ export class HomeComponent implements OnInit {
   constructor(private bestBuyService: BestBuyService) {}
 
   ngOnInit(): void {
+    if (window.innerWidth <= MOBILE_SCREEN_THRESHOLD) {
+      this.mobileSite = true;
+    } else {
+      this.mobileSite = false;
+    }
+
     this.bestBuyService.getPortalProducts(this.offerTypes.shift()).subscribe(
       (results: CommonProductsAPIData) => {
         if (results != null) {
@@ -43,5 +51,14 @@ export class HomeComponent implements OnInit {
           "No products to display. Please try again later!";
       }
     );
+  }
+
+  @HostListener("window:resize", ["event"])
+  onResize(event) {
+    if (window.innerWidth <= MOBILE_SCREEN_THRESHOLD) {
+      this.mobileSite = true;
+    } else {
+      this.mobileSite = false;
+    }
   }
 }

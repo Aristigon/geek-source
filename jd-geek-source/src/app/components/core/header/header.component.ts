@@ -1,6 +1,6 @@
 /* eslint-disable no-magic-numbers */
 /* eslint-disable no-console */
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { Categories } from "src/app/models/Categories.interface";
 import { CommonPortalData } from "src/app/models/commonPortalData.interface";
 import { BestBuyService } from "src/app/services/best-buy.service";
@@ -28,6 +28,7 @@ export class HeaderComponent implements OnInit {
     saved: "SAVED ITEMS",
   };
   exitingMenuButton = true;
+  @Input() mobileMenu = false;
 
   constructor(
     private bestBuyService: BestBuyService,

@@ -17,14 +17,6 @@
   margin-left: $mainGutter+10px !important;
 }
 
-.smallrect {
-  position: relative;
-  width: 50px;
-  height: 7px;
-  margin-bottom: 10px;
-  background-color: $secondary;
-}
-
 .productsCarouselTitle {
   margin-bottom: 30px;
   font-size: large;
@@ -37,9 +29,21 @@
 }
 
 .lowerSection {
-  margin-top: $mainGutter;
-  width: $maxPageWidth + $doubleGutter * 2;
-  height: fit-content;
-  position: relative;
-  left: -$doubleGutter * 2;
+  &-primary {
+    margin-top: $mainGutter;
+    width: $maxPageWidth + $doubleGutter * 2;
+    height: fit-content;
+    position: relative;
+    left: -$doubleGutter * 2;
+  }
+
+  &--mobile {
+    //margin-top: $mainGutter;
+    //width: 100%;
+    //max-width: $maxPageWidth / 2;
+    //min-width: auto;
+    //height: fit-content;
+    position: relative;
+    justify-content: center;
+  }
 }

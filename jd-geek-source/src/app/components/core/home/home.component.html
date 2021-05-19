@@ -1,7 +1,10 @@
 <div class="flex homeMain">
-  <app-hero-display></app-hero-display>
-  <app-serviceiconsbar class="mainGutterDrop"></app-serviceiconsbar>
-  <div class="flex carouselRegion">
+  <app-hero-display *ngIf="!mobileSite"></app-hero-display>
+  <app-serviceiconsbar
+    *ngIf="!mobileSite"
+    class="mainGutterDrop"
+  ></app-serviceiconsbar>
+  <div class="flex carouselRegion" *ngIf="!mobileSite">
     <div>
       <div class="productCarouselDisplay">
         <app-sectionheader
@@ -38,10 +41,52 @@
         ></app-product-display-portal>
       </div>
     </div>
-    <div class="flex lowerSection">
+    <div class="flex lowerSection-primary">
       <app-hottest-deals [hottestDeal]="hottestDeal"></app-hottest-deals>
       <div class="mainColumn"></div>
       <app-shop-by-category></app-shop-by-category>
+    </div>
+  </div>
+  <div *ngIf="mobileSite">
+    <div class="flex flexColumn lowerSection--mobile">
+      <app-shop-by-category></app-shop-by-category>
+      <app-hottest-deals [hottestDeal]="hottestDeal"></app-hottest-deals>
+    </div>
+    <div>
+      <div class="productCarouselDisplay">
+        <app-sectionheader
+          fontSize="large"
+          featureStyle="redTheme"
+          textStyle="lightTheme"
+          titleText="Featured Products"
+        >
+        </app-sectionheader>
+      </div>
+      <app-product-display-portal
+        class="carousel"
+        [productData]="featuredProducts"
+        carouselID="featured"
+        [errorMessage]="noResultsMessage"
+      ></app-product-display-portal>
+    </div>
+    <div>
+      <div>
+        <div class="productCarouselDisplay">
+          <app-sectionheader
+            fontSize="large"
+            featureStyle="redTheme"
+            textStyle="lightTheme"
+            titleText="Today's Deals"
+          >
+          </app-sectionheader>
+        </div>
+        <app-product-display-portal
+          class="carousel"
+          [productData]="todaysDeals"
+          carouselID="todays"
+          [errorMessage]="noResultsMessage"
+        ></app-product-display-portal>
+      </div>
     </div>
   </div>
 </div>

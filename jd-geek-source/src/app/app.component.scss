@@ -3,12 +3,24 @@
 @import "../constants/sizing.scss";
 
 .content {
-  display: flex;
-  margin: -8px auto 0;
-  padding: 0 16px;
-  width: $maxContentWidth;
-  flex-flow: column nowrap;
-  justify-content: space-between;
+  &-primary {
+    padding: 0 16px;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+  }
+  &--desktop {
+    width: 100%;
+    max-width: $maxContentWidth;
+    min-width: auto;
+    margin: -8px auto 0;
+  }
+
+  &--mobile {
+    width: 100%;
+    max-width: $maxContentWidth / 2;
+    min-width: $maxContentWidth / 2;
+    margin: -8px 30px 0 -30px;
+  }
 }
 
 .header {

@@ -12,6 +12,7 @@ export class ShoppingCartComponent implements DoCheck {
   message = "items in your cart";
   @Input() iconPlacement: string;
   @Input() iconSize: string;
+  @Input() mobileMenu = false;
 
   constructor(private utilService: UtilService) {}
   ngDoCheck(): void {

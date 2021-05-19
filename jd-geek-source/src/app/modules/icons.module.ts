@@ -20,6 +20,7 @@ import { CcApplePayIconComponent } from "../components/icons/cc-apple-pay-icon/c
 import { RecycleIconComponent } from "../components/icons/recycle-icon/recycle-icon.component";
 import { SquareIconComponent } from "../components/icons/square-icon/square-icon.component";
 import { CheckSquareIconComponent } from "../components/icons/check-square-icon/check-square-icon.component";
+import { BarsMenuIconComponent } from "../components/icons/bars-menu-icon/bars-menu-icon.component";
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { CheckSquareIconComponent } from "../components/icons/check-square-icon/
     RecycleIconComponent,
     SquareIconComponent,
     CheckSquareIconComponent,
+    BarsMenuIconComponent,
   ],
   exports: [
     SearchIconComponent,
@@ -63,6 +65,7 @@ import { CheckSquareIconComponent } from "../components/icons/check-square-icon/
     RecycleIconComponent,
     SquareIconComponent,
     CheckSquareIconComponent,
+    BarsMenuIconComponent,
   ],
   imports: [CommonModule, FontAwesomeModule],
 })

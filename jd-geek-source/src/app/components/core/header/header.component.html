@@ -1,20 +1,30 @@
-<div class="flex headerMain">
-  <div class="topHeader">
-    <div class="flex topHeader2">
-      <app-logo class="logoItem"></app-logo>
-      <div class="veritcalLine"></div>
-      <app-search
-        componentPlacement="header"
-        class="flex searchItem"
-      ></app-search>
-      <app-shopping-cart
-        iconSize="25pt"
-        iconPlacement="header"
-        class="flex shoppingCartItem"
-      ></app-shopping-cart>
-    </div>
+<div
+  class="flex headerMain-primary"
+  [ngClass]="mobileMenu ? 'headerMain--mobile' : 'headerMain--desktop'"
+>
+  <div
+    class="flex topHeader-primary"
+    [ngClass]="mobileMenu ? 'topHeader--mobile' : 'topHeader--desktop'"
+  >
+    <app-logo class="logoItem"></app-logo>
+    <div class="veritcalLine"></div>
+    <app-search
+      componentPlacement="header"
+      class="flex searchItem"
+    ></app-search>
+    <app-shopping-cart
+      iconSize="25pt"
+      iconPlacement="header"
+      class="flex shoppingCartItem"
+      [mobileMenu]="mobileMenu"
+    ></app-shopping-cart>
+    <app-bars-menu-icon
+      iconSize="2x"
+      *ngIf="mobileMenu"
+      class="mainGutterRight"
+    ></app-bars-menu-icon>
   </div>
-  <div class="bottomheader">
+  <div class="bottomheader" *ngIf="!mobileMenu">
     <app-vertical-dropdown-menu
       class="mainLeftGutter"
       menuTitle="PRODUCTS"
