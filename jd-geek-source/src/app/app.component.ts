@@ -13,6 +13,8 @@ export class AppComponent implements OnInit {
   mobileSite = false;
 
   ngOnInit(): void {
+    console.log(navigator.userAgent);
+
     if (window.innerWidth <= MOBILE_SCREEN_THRESHOLD) {
       this.mobileSite = true;
     } else {
