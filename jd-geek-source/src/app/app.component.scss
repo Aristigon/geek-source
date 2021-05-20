@@ -2,6 +2,10 @@
 @import "../constants/color.scss";
 @import "../constants/sizing.scss";
 
+@media screen and (min-width: 320px) {
+  body {background-color: pink;}
+}
+
 .content {
   &-primary {
     padding: 0 16px;
