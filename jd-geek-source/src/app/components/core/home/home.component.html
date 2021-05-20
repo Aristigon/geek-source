@@ -42,7 +42,10 @@
       </div>
     </div>
     <div class="flex lowerSection-primary">
-      <app-hottest-deals [hottestDeal]="hottestDeal"></app-hottest-deals>
+      <app-hottest-deals
+        [mobileSite]="mobileSite"
+        [hottestDeal]="hottestDeal"
+      ></app-hottest-deals>
       <div class="mainColumn"></div>
       <app-shop-by-category></app-shop-by-category>
     </div>
