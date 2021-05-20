@@ -13,21 +13,19 @@ export class AppComponent implements OnInit {
   mobileSite = false;
 
   ngOnInit(): void {
-    const mobile = navigator.userAgent.includes("Mobile");
-
-    if (window.innerWidth <= MOBILE_SCREEN_THRESHOLD || mobile) {
+    if (navigator.userAgent.includes("Mobile")) {
       this.mobileSite = true;
     } else {
       this.mobileSite = false;
     }
   }
 
-  @HostListener("window:resize", ["event"])
-  onResize(event) {
-    if (window.innerWidth <= MOBILE_SCREEN_THRESHOLD) {
-      this.mobileSite = true;
-    } else {
-      this.mobileSite = false;
-    }
-  }
+  // @HostListener("window:resize", ["event"])
+  // onResize(event) {
+  //   if (window.innerWidth <= MOBILE_SCREEN_THRESHOLD) {
+  //     this.mobileSite = true;
+  //   } else {
+  //     this.mobileSite = false;
+  //   }
+  // }
 }

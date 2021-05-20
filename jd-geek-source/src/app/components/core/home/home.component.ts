@@ -20,9 +20,7 @@ export class HomeComponent implements OnInit {
   constructor(private bestBuyService: BestBuyService) {}
 
   ngOnInit(): void {
-    const mobile = navigator.userAgent.includes("Mobile");
-
-    if (window.innerWidth <= MOBILE_SCREEN_THRESHOLD || mobile) {
+    if (navigator.userAgent.includes("Mobile")) {
       this.mobileSite = true;
     } else {
       this.mobileSite = false;
@@ -55,12 +53,12 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  @HostListener("window:resize", ["event"])
-  onResize(event) {
-    if (window.innerWidth <= MOBILE_SCREEN_THRESHOLD) {
-      this.mobileSite = true;
-    } else {
-      this.mobileSite = false;
-    }
-  }
+  // @HostListener("window:resize", ["event"])
+  // onResize(event) {
+  //   if (window.innerWidth <= MOBILE_SCREEN_THRESHOLD) {
+  //     this.mobileSite = true;
+  //   } else {
+  //     this.mobileSite = false;
+  //   }
+  // }
 }
