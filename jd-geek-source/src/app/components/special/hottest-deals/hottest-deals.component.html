@@ -6,7 +6,10 @@
       : 'hottestDealDisplayBox--desktop'
   "
 >
-  <div class="flex mainSection">
+  <div
+    class="flex mainSection-primary"
+    [ngClass]="mobileSite ? 'mainSection--mobile' : 'mainSection--desktop'"
+  >
     <app-sectionheader
       fontSize="x-large"
       featureStyle="redTheme"

@@ -26,11 +26,22 @@ $imageHeight: 300px;
 }
 
 .mainSection {
-  margin-top: 20px;
-  padding-top: 20px;
-  padding-left: $doubleGutter*3;
-  flex-flow: column nowrap;
-  align-content: space-between;
+  &-primary {
+    margin-top: 20px;
+    padding-top: 20px;
+    padding-left: $doubleGutter*3;
+    flex-flow: column nowrap;
+    align-content: space-between;
+  }
+
+  &--desktop {
+    padding-left: $doubleGutter*3;
+
+  }
+
+  &--mobile {
+    padding-left: $halfGutter;
+  }
 }
 
 .hottestProduct {
