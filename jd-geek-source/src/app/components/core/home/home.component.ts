@@ -20,7 +20,9 @@ export class HomeComponent implements OnInit {
   constructor(private bestBuyService: BestBuyService) {}
 
   ngOnInit(): void {
-    if (window.innerWidth <= MOBILE_SCREEN_THRESHOLD) {
+    const mobile = navigator.userAgent.includes("Mobile");
+
+    if (window.innerWidth <= MOBILE_SCREEN_THRESHOLD || mobile) {
       this.mobileSite = true;
     } else {
       this.mobileSite = false;
