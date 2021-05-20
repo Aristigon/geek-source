@@ -1,5 +1,5 @@
 /* eslint-disable no-magic-numbers */
-import { Component, Input, OnChanges } from "@angular/core";
+import { Component, Input, OnChanges, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { CommonPortalData } from "src/app/models/commonPortalData.interface";
 import { UtilService } from "src/app/services/util.service";
@@ -11,7 +11,7 @@ const RIGHT_SCROLL_STOP = 0;
   templateUrl: "./product-display-portal.component.html",
   styleUrls: ["./product-display-portal.component.scss"],
 })
-export class ProductDisplayPortalComponent implements OnChanges {
+export class ProductDisplayPortalComponent implements OnChanges, OnInit {
   @Input() productData: CommonPortalData[];
   @Input() carouselID: string;
   @Input() errorMessage: string;
@@ -22,8 +22,17 @@ export class ProductDisplayPortalComponent implements OnChanges {
   scrollTracker = RIGHT_SCROLL_STOP;
   displayProducts = true;
   recentlyViewed: number[] = [];
+  mobileSite = false;
 
   constructor(public router: Router, private utilService: UtilService) {}
+
+  ngOnInit(): void {
+    if (navigator.userAgent.includes("Mobile")) {
+      this.mobileSite = true;
+    } else {
+      this.mobileSite = false;
+    }
+  }
 
   ngOnChanges(): void {
     if (this.productData) {

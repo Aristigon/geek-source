@@ -1,6 +1,12 @@
 <div *ngIf="displayProducts">
-  <div class="portalShroud"></div>
-  <div class="flex portalView">
+  <div
+    class="portal-primary protal-shroud"
+    [ngClass]="mobileSite ? 'portal--mobile' : 'portal--desktop'"
+  ></div>
+  <div
+    class="flex portal-primary portal-view"
+    [ngClass]="mobileSite ? 'portal--mobile' : 'portal--desktop'"
+  >
     <div class="flex carouselContainer">
       <div id="{{ carouselID }}" class="flex carousel">
         <section
