@@ -26,6 +26,8 @@ export class HomeComponent implements OnInit {
       this.mobileSite = false;
     }
 
+    console.log("home", this.mobileSite);
+
     this.bestBuyService.getPortalProducts(this.offerTypes.shift()).subscribe(
       (results: CommonProductsAPIData) => {
         if (results != null) {
