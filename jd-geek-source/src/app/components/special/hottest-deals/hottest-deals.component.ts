@@ -11,6 +11,8 @@ export class HottestDealsComponent implements OnChanges {
   @Input() mobileSite = false;
   savings: number;
   ngOnChanges(): void {
+    console.log(this.mobileSite);
+
     if (this.hottestDeal != null) {
       this.savings = this.hottestDeal.regularPrice - this.hottestDeal.salePrice;
     }
