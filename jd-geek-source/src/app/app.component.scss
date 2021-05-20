@@ -17,8 +17,8 @@
 
   &--mobile {
     width: 100%;
-    max-width: $maxContentWidth / 2;
-    min-width: $maxContentWidth / 2;
+    max-width: auto;
+    min-width: auto;
     margin: -8px 30px 0 -30px;
   }
 }
