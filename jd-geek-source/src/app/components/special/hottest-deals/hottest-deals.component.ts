@@ -11,6 +11,11 @@ export class HottestDealsComponent implements OnChanges {
   @Input() mobileSite = false;
   savings: number;
   ngOnChanges(): void {
+    if (navigator.userAgent.includes("Mobile")) {
+      this.mobileSite = true;
+    } else {
+      this.mobileSite = false;
+    }
     console.log(this.mobileSite);
 
     if (this.hottestDeal != null) {
