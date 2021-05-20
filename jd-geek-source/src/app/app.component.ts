@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
 
     console.log(mobile);
 
-    if (window.innerWidth <= MOBILE_SCREEN_THRESHOLD) {
+    if (window.innerWidth <= MOBILE_SCREEN_THRESHOLD || mobile) {
       this.mobileSite = true;
     } else {
       this.mobileSite = false;
