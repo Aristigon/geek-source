@@ -1,4 +1,11 @@
-<div class="hottestDealDisplayBox">
+<div
+  class="hottestDealDisplayBox-primary"
+  [ngClass]="
+    mobileSite
+      ? 'hottestDealDisplayBox--mobile'
+      : 'hottestDealDisplayBox--desktop'
+  "
+>
   <div class="flex mainSection">
     <app-sectionheader
       fontSize="x-large"

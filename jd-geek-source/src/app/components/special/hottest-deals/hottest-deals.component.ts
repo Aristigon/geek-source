@@ -8,6 +8,7 @@ import { CommonPortalData } from "src/app/models/commonPortalData.interface";
 })
 export class HottestDealsComponent implements OnChanges {
   @Input() hottestDeal: CommonPortalData;
+  @Input() mobileSite = false;
   savings: number;
   ngOnChanges(): void {
     if (this.hottestDeal != null) {

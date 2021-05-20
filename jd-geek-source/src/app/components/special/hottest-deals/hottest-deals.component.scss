@@ -6,11 +6,23 @@ $imageWidth: 400px;
 $imageHeight: 300px;
 
 .hottestDealDisplayBox {
-  width: 900px;
-  height: 800px;
-  max-width: 900px;
-  max-height: 800px;
-  background-color: $white;
+  &-primary {
+      background-color: $white;
+  }
+
+  &--desktop {
+    width: 900px;
+    height: 800px;
+    max-width: 900px;
+    max-height: 800px;
+  }
+
+  &--mobile {
+    width: auto;
+    height: auto;
+    max-width: auto;
+    max-height: auto;
+  }
 }
 
 .mainSection {
