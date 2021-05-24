@@ -5,7 +5,6 @@
   display: flex;
 }
 .headerMain {
-  height: 100px;
   align-items: center;
   flex-direction: column;
 }
@@ -15,12 +14,10 @@
   background-color: $white;
   color: $secondary;
   margin-bottom: 2px;
+  align-items: center;
   flex: 3;
 }
 
-.topHeader2 {
-  align-items: center;
-}
 .logoItem {
   margin-left: $mainGutter;
   justify-content: flex-start;
@@ -38,7 +35,7 @@
 }
 
 .shoppingCartItem {
-  margin-right: $mainGutter;
+  margin-right: $halfGutter;
   justify-content: flex-end;
   flex: 1;
   color: $secondary;

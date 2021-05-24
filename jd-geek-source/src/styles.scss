@@ -48,3 +48,57 @@ body {
   margin-left: $mainGutter;
   margin-right: $mainGutter;
 }
+
+.desktopOnly {
+  display: block;
+}
+
+.mobileOnly {
+  display: block;
+}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .desktopOnly {display: none;}
+  .mobileOnly {display: block;}
+  .mainGutterSides {
+    margin-left: $halfGutter;
+    margin-right: $halfGutter;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .desktopOnly {display: none;}
+  .mobileOnly {display: block;}
+  .mainGutterSides {
+    margin-left: $halfGutter;
+    margin-right: $halfGutter;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .desktopOnly {display: none;}
+  .mobileOnly {display: block;}
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .desktopOnly {display: block;}
+  .mobileOnly {display: none;}
+
+}
+
+// /* Extra large devices (large laptops and desktops, 1200px and up) */
+// @media only screen and (min-width: 1200px) {
+//   .desktopOnly {display: block;}
+// }
+
+// @media only screen and (min-width: 1400px) {
+//   .desktopOnly {display: block;}
+// }
+
+// @media only screen and (min-width: 1600px) {
+//   .desktopOnly {display: block;}
+// }

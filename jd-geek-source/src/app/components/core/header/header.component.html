@@ -1,20 +1,22 @@
 <div class="flex headerMain">
-  <div class="topHeader">
-    <div class="flex topHeader2">
-      <app-logo class="logoItem"></app-logo>
-      <div class="veritcalLine"></div>
-      <app-search
-        componentPlacement="header"
-        class="flex searchItem"
-      ></app-search>
-      <app-shopping-cart
-        iconSize="25pt"
-        iconPlacement="header"
-        class="flex shoppingCartItem"
-      ></app-shopping-cart>
-    </div>
+  <div class="flex topHeader">
+    <app-logo class="logoItem"></app-logo>
+    <div class="veritcalLine"></div>
+    <app-search
+      componentPlacement="header"
+      class="flex searchItem"
+    ></app-search>
+    <app-shopping-cart
+      iconSize="25pt"
+      iconPlacement="header"
+      class="flex shoppingCartItem"
+    ></app-shopping-cart>
+    <app-mobile-menu-icon
+      iconSize="2x"
+      class="mobileOnly"
+    ></app-mobile-menu-icon>
   </div>
-  <div class="bottomheader">
+  <div class="bottomheader desktopOnly">
     <app-vertical-dropdown-menu
       class="mainLeftGutter"
       menuTitle="PRODUCTS"
