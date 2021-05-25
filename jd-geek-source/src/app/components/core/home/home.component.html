@@ -1,7 +1,7 @@
 <div class="flex homeMain">
   <app-hero-display class="desktopOnly"></app-hero-display>
   <app-serviceiconsbar class="mainGutterDrop desktopOnly"></app-serviceiconsbar>
-  <div class="flex carouselRegion">
+  <div class="flex carouselRegion desktopOnly">
     <div>
       <div class="productCarouselDisplay">
         <app-sectionheader
@@ -42,6 +42,48 @@
       <app-hottest-deals [hottestDeal]="hottestDeal"></app-hottest-deals>
       <div class="mainColumn"></div>
       <app-shop-by-category></app-shop-by-category>
+    </div>
+  </div>
+  <div class="flex carouselRegion mobileOnly">
+    <div class="flex flexColumn upperLowerSection">
+      <app-shop-by-category></app-shop-by-category>
+      <app-hottest-deals [hottestDeal]="hottestDeal"></app-hottest-deals>
+    </div>
+    <div>
+      <div class="productCarouselDisplay">
+        <app-sectionheader
+          fontSize="large"
+          featureStyle="redTheme"
+          textStyle="lightTheme"
+          titleText="Featured Products"
+        >
+        </app-sectionheader>
+      </div>
+      <app-product-display-portal
+        class="carousel"
+        [productData]="featuredProducts"
+        carouselID="featured"
+        [errorMessage]="noResultsMessage"
+      ></app-product-display-portal>
+    </div>
+    <div>
+      <div>
+        <div class="productCarouselDisplay">
+          <app-sectionheader
+            fontSize="large"
+            featureStyle="redTheme"
+            textStyle="lightTheme"
+            titleText="Today's Deals"
+          >
+          </app-sectionheader>
+        </div>
+        <app-product-display-portal
+          class="carousel"
+          [productData]="todaysDeals"
+          carouselID="todays"
+          [errorMessage]="noResultsMessage"
+        ></app-product-display-portal>
+      </div>
     </div>
   </div>
 </div>

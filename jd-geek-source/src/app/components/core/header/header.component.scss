@@ -5,6 +5,9 @@
   display: flex;
 }
 .headerMain {
+  height: auto;
+  min-width: 60px;
+  max-height: 100px;
   align-items: center;
   flex-direction: column;
 }

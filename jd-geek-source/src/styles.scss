@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./constants/color.scss";
 @import "./constants/gutters.scss";
+@import "./constants/sizing.scss";
 
 .flex {
   display: flex;
@@ -56,6 +57,11 @@ body {
 .mobileOnly {
   display: block;
 }
+
+.contentMain {
+  margin: -8px auto 0;
+//  width: $maxContentWidth;
+}
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   .desktopOnly {display: none;}
@@ -63,6 +69,10 @@ body {
   .mainGutterSides {
     margin-left: $halfGutter;
     margin-right: $halfGutter;
+  }
+  .contentMain {
+    margin: -8px -16px 0 -16px;
+    //width: fit-content;
   }
 }
 
@@ -74,26 +84,40 @@ body {
     margin-left: $halfGutter;
     margin-right: $halfGutter;
   }
+  .contentMain {
+    margin: -8px 0 0 -16px;
+    //width: fit-content;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   .desktopOnly {display: none;}
   .mobileOnly {display: block;}
-
+  .contentMain {
+    margin: -8px 0 0 -16px;
+    //width: fit-content;
+  }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   .desktopOnly {display: block;}
   .mobileOnly {display: none;}
-
+  .contentMain {
+    margin: -8px auto 0;
+    //width: fit-content;
+  }
 }
 
-// /* Extra large devices (large laptops and desktops, 1200px and up) */
-// @media only screen and (min-width: 1200px) {
-//   .desktopOnly {display: block;}
-// }
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: $maxContentWidth) {
+  .desktopOnly {display: block;}
+  .mobileOnly {display: none;}
+  .contentMain {
+    margin: -8px auto 0;
+    //width: $maxContentWidth;
+  }}
 
 // @media only screen and (min-width: 1400px) {
 //   .desktopOnly {display: block;}
